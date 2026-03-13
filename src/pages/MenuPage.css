@@ -30,34 +30,14 @@
 .hotzone:hover  { background: rgba(255,255,255,0.13); }
 .hotzone:active { background: rgba(255,255,255,0.25); }
 
-/* Huruf Abjad - papan kiri */
-.abjad {
-  left: 3%;
-  top: 42%;
-  width: 25%;
-  height: 36%;
-}
+/* Huruf Abjad — papan kiri bawah */
+.abjad   { left: 14%; top: 50%; width: 18%; height: 30%; }
 
-/* Huruf Vokal - papan tengah atas */
-.vokal {
-  left: 27%;
-  top: 22%;
-  width: 25%;
-  height: 33%;
-}
+/* Huruf Vokal — papan tengah atas */
+.vokal   { left: 33%; top: 23%; width: 20%; height: 30%; }
 
-/* Ayo Membaca - papan tengah bawah */
-.membaca {
-  left: 27%;
-  top: 52%;
-  width: 25%;
-  height: 30%;
-}
+/* Ayo Membaca — papan tengah bawah */
+.membaca { left: 43%; top: 50%; width: 20%; height: 28%; }
 
-/* Game Time - papan kanan */
-.game {
-  left: 72%;
-  top: 55%;
-  width: 25%;
-  height: 33%;
-}
+/* Game Time — papan kanan bawah */
+.game    { left: 65%; top: 50%; width: 20%; height: 28%; }

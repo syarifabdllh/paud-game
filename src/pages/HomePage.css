@@ -21,14 +21,14 @@
 .start-hotzone {
   position: absolute;
   z-index: 2;
-  left: 35%;
-  top: 63%;
-  width: 30%;
-  height: 13%;
+  left: 38%;
+  top: 78%;
+  width: 24%;
+  height: 10%;
   background: transparent;
   border: none;
   cursor: pointer;
   border-radius: 50px;
 }
 .start-hotzone:hover  { background: rgba(255,255,255,0.12); }
-.start-hotzone:active { background: rgba(255,255,255,0.2);  }
+.start-hotzone:active { background: rgba(255,255,255,0.2); }
