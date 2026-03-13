@@ -1,69 +1,37 @@
-.abjad-page { gap: 0; }
-
-.sub-info {
-  font-size: 1rem;
-  color: #888;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.abjad-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  width: 100%;
-  max-width: 500px;
-}
-
-.abjad-card {
-  background: var(--warna);
-  border: none;
-  border-radius: 14px;
-  box-shadow: 0 5px 0 color-mix(in srgb, var(--warna) 70%, black 30%);
-  padding: 12px 6px;
-  cursor: pointer;
-  transition: all 0.15s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+.abjad-page {
   position: relative;
-  top: 0;
-  animation: pop 0.3s ease both;
-}
-.abjad-card:active { top: 4px; box-shadow: none; }
-.abjad-card.aktif  { top: 4px; box-shadow: none; filter: brightness(1.1); }
-
-.abjad-huruf {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.8rem;
-  color: white;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
-  line-height: 1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #87ceeb;
 }
 
-.abjad-popup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  animation: pop 0.2s ease;
-  background: rgba(255,255,255,0.2);
-  border-radius: 8px;
-  padding: 4px 6px;
+.abjad-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-}
-.popup-emoji { font-size: 1.2rem; line-height: 1; }
-.popup-teks  {
-  font-size: 0.6rem;
-  color: white;
-  font-weight: 700;
-  text-align: center;
-  word-break: break-word;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
 }
 
-@media (max-width: 380px) {
-  .abjad-grid { grid-template-columns: repeat(4, 1fr); }
-  .abjad-huruf { font-size: 1.5rem; }
+.abjad-hotzone {
+  position: absolute;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
 }
+
+.abjad-hotzone:hover  { background: rgba(255,255,255,0.15); }
+.abjad-hotzone:active { background: rgba(255,255,255,0.25); }
+
+/* Tombol < — pojok kiri bawah */
+.prev { left: 3%; bottom: 3%; width: 8%; height: 13%; }
+
+/* Tombol > — pojok kanan bawah */
+.next { right: 3%; bottom: 3%; width: 8%; height: 13%; }

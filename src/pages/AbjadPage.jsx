@@ -1,35 +1,31 @@
 import { useState } from 'react';
-import Navbar from '../components/Navbar';
-import { HURUF_ABJAD } from '../data/content';
+import { useNavigate } from 'react-router-dom';
 import './AbjadPage.css';
 
 export default function AbjadPage() {
-  const [aktif, setAktif] = useState(null);
+  const [index, setIndex] = useState(0); // 0 = huruf A (file 1.png)
+  const navigate = useNavigate();
+
+  const prev = () => {
+    if (index > 0) setIndex(index - 1);
+    else navigate('/menu');
+  };
+
+  const next = () => {
+    if (index < 25) setIndex(index + 1);
+    else navigate('/menu');
+  };
 
   return (
-    <div className="abjad-page batik-bg page-container">
-      <Navbar title="Huruf Abjad 🔤" />
-
-      <p className="sub-info">Tap huruf untuk melihat contohnya!</p>
-
-      <div className="abjad-grid">
-        {HURUF_ABJAD.map((item) => (
-          <button
-            key={item.huruf}
-            className={`abjad-card ${aktif === item.huruf ? 'aktif' : ''}`}
-            style={{ '--warna': item.warna }}
-            onClick={() => setAktif(aktif === item.huruf ? null : item.huruf)}
-          >
-            <span className="abjad-huruf">{item.huruf}</span>
-            {aktif === item.huruf && (
-              <div className="abjad-popup">
-                <span className="popup-emoji">{item.emoji}</span>
-                <span className="popup-teks">{item.contoh}</span>
-              </div>
-            )}
-          </button>
-        ))}
-      </div>
+    <div className="abjad-page">
+      <img
+        src={`/assets/${index + 1}.png`}
+        alt={`Huruf ke-${index + 1}`}
+        className="abjad-bg"
+        draggable={false}
+      />
+      <button className="abjad-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
+      <button className="abjad-hotzone next" onClick={next} aria-label="Berikutnya" />
     </div>
   );
 }
