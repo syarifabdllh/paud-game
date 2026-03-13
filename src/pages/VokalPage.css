@@ -1,100 +1,34 @@
-.vokal-page { gap: 20px; }
-
-.vokal-hero {
-  background: var(--warna);
-  border-radius: 28px;
-  padding: 32px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 8px 0 color-mix(in srgb, var(--warna) 70%, black 30%);
-  animation: pop 0.35s ease;
-  width: 100%;
-  max-width: 340px;
-  text-align: center;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.vokal-big-emoji { font-size: 5rem; animation: bounce 2s ease-in-out infinite; }
-.vokal-big-huruf {
-  font-family: 'Fredoka One', cursive;
-  font-size: 5rem;
-  color: white;
-  text-shadow: 4px 4px 0 rgba(0,0,0,0.15);
-  line-height: 1;
-}
-.vokal-desc {
-  color: rgba(255,255,255,0.9);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-.vokal-contoh {
-  background: rgba(255,255,255,0.2);
-  border-radius: 50px;
-  padding: 6px 20px;
-  color: white;
-  font-size: 1rem;
-}
-
-/* Tombol pilih */
-.vokal-pilihan {
-  display: flex;
-  gap: 12px;
-}
-.vokal-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: none;
-  background: white;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.5rem;
-  color: var(--warna);
-  box-shadow: 0 4px 0 rgba(0,0,0,0.12);
-  cursor: pointer;
-  transition: all 0.15s;
+.vokal-page {
   position: relative;
-  top: 0;
-}
-.vokal-btn:active { top: 3px; box-shadow: none; }
-.vokal-btn.aktif {
-  background: var(--warna);
-  color: white;
-  top: 3px;
-  box-shadow: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #87ceeb;
 }
 
-/* Pola bawah */
-.vokal-pola {
-  background: white;
-  border-radius: 20px;
-  padding: 16px 24px;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.08);
-  text-align: center;
+.vokal-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 340px;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
 }
-.pola-label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #888;
-  margin-bottom: 10px;
+
+.vokal-hotzone {
+  position: absolute;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
 }
-.pola-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-.pola-chip {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.4rem;
-  color: white;
-  box-shadow: 0 3px 0 rgba(0,0,0,0.12);
-}
+
+.vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
+.vokal-hotzone:active { background: rgba(255,255,255,0.25); }
+
+.prev { left: 3%; bottom: 3%; width: 8%; height: 13%; }
+.next { right: 3%; bottom: 3%; width: 8%; height: 13%; }
