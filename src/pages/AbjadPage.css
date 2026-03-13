@@ -30,8 +30,8 @@
 .abjad-hotzone:hover  { background: rgba(255,255,255,0.15); }
 .abjad-hotzone:active { background: rgba(255,255,255,0.25); }
 
-/* Tombol < — pojok kiri bawah */
-.prev { left: 3%; bottom: 3%; width: 8%; height: 13%; }
+/* Tombol < — kiri bawah, di dalam area gambar */
+.prev { left: 11%; bottom: 3%; width: 8%; height: 13%; }
 
-/* Tombol > — pojok kanan bawah */
-.next { right: 3%; bottom: 3%; width: 8%; height: 13%; }
+/* Tombol > — kanan bawah, di dalam area gambar */
+.next { right: 11%; bottom: 3%; width: 8%; height: 13%; }

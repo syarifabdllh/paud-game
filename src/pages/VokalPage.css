@@ -27,8 +27,8 @@
   border-radius: 16px;
 }
 
-.vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
-.vokal-hotzone:active { background: rgba(255,255,255,0.25); }
+/* Tombol < — kiri bawah, di dalam area gambar */
+.prev { left: 11%; bottom: 3%; width: 8%; height: 13%; }
 
-.prev { left: 3%; bottom: 3%; width: 8%; height: 13%; }
-.next { right: 3%; bottom: 3%; width: 8%; height: 13%; }
+/* Tombol > — kanan bawah, di dalam area gambar */
+.next { right: 11%; bottom: 3%; width: 8%; height: 13%; }
