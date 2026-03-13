@@ -1,78 +1,62 @@
-.menu-page { gap: 0; }
-
-.menu-hero {
-  text-align: center;
-  margin-bottom: 24px;
-  animation: slideUp 0.5s ease;
-}
-.menu-heading {
-  font-size: 2rem;
-  color: var(--coklat);
-}
-.menu-sub {
-  color: #888;
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-top: 4px;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  width: 100%;
-  max-width: 480px;
-}
-
-.menu-card {
-  background: var(--card-bg);
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 7px 0 var(--card-shadow);
-  padding: 28px 16px 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  transition: all 0.15s ease;
+.menu-page {
   position: relative;
-  top: 0;
-  animation: pop 0.4s ease both;
-}
-.menu-card:hover { filter: brightness(1.07); }
-.menu-card:active {
-  top: 5px;
-  box-shadow: 0 2px 0 var(--card-shadow);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.menu-icon {
-  font-size: 3rem;
-  line-height: 1;
-  animation: float 3s ease-in-out infinite;
-}
-.menu-card:nth-child(2) .menu-icon { animation-delay: 0.5s; }
-.menu-card:nth-child(3) .menu-icon { animation-delay: 1s; }
-.menu-card:nth-child(4) .menu-icon { animation-delay: 1.5s; }
-
-.menu-label {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.25rem;
-  color: white;
-  text-shadow: 1px 2px 0 rgba(0,0,0,0.15);
-}
-.menu-desc {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.85);
-  font-weight: 600;
+.menu-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.menu-deco {
-  display: flex;
-  gap: 14px;
-  font-size: 1.6rem;
-  margin-top: 28px;
+.hotzone {
+  position: absolute;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 14px;
+  transition: background 0.15s;
 }
-.menu-deco span { animation: float 2.5s ease-in-out infinite; }
-.menu-deco span:nth-child(2) { animation-delay: 0.6s; }
-.menu-deco span:nth-child(3) { animation-delay: 1.2s; }
+.hotzone:hover  { background: rgba(255,255,255,0.13); }
+.hotzone:active { background: rgba(255,255,255,0.25); }
+
+/* Huruf Abjad - papan kiri */
+.abjad {
+  left: 3%;
+  top: 42%;
+  width: 25%;
+  height: 36%;
+}
+
+/* Huruf Vokal - papan tengah atas */
+.vokal {
+  left: 27%;
+  top: 22%;
+  width: 25%;
+  height: 33%;
+}
+
+/* Ayo Membaca - papan tengah bawah */
+.membaca {
+  left: 27%;
+  top: 52%;
+  width: 25%;
+  height: 30%;
+}
+
+/* Game Time - papan kanan */
+.game {
+  left: 72%;
+  top: 55%;
+  width: 25%;
+  height: 33%;
+}
