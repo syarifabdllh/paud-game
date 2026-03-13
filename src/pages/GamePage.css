@@ -1,0 +1,146 @@
+.game-page { gap: 16px; }
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+}
+.skor-box {
+  background: var(--kuning);
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: var(--coklat);
+  box-shadow: 0 3px 0 #cc9200;
+}
+.soal-num {
+  font-weight: 700;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 440px;
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--biru), var(--biru-muda));
+  border-radius: 50px;
+  transition: width 0.4s ease;
+}
+
+.soal-card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: pop 0.3s ease;
+}
+.soal-card.shake {
+  animation: shake 0.4s ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-10px); }
+  40%       { transform: translateX(10px); }
+  60%       { transform: translateX(-8px); }
+  80%       { transform: translateX(8px); }
+}
+
+.soal-pertanyaan {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #666;
+}
+.soal-gambar { font-size: 5rem; line-height: 1; }
+.hint-box {
+  background: #fff3cd;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #856404;
+  animation: pop 0.2s ease;
+}
+
+/* Pilihan jawaban */
+.pilihan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.pilihan-btn {
+  padding: 20px 12px;
+  border: none;
+  border-radius: 18px;
+  background: var(--biru);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #005580;
+  transition: all 0.15s;
+  position: relative;
+  top: 0;
+}
+.pilihan-btn:hover:not(:disabled) { filter: brightness(1.1); }
+.pilihan-btn:active:not(:disabled) { top: 4px; box-shadow: 0 2px 0 #005580; }
+.pilihan-btn:disabled { cursor: default; }
+.pilihan-btn.benar {
+  background: var(--hijau);
+  box-shadow: 0 6px 0 #1e8f3a;
+  animation: pop 0.3s ease;
+}
+.pilihan-btn.salah {
+  background: var(--merah);
+  box-shadow: 0 6px 0 #b02030;
+}
+
+/* Layar hasil */
+.hasil-screen { justify-content: center; }
+.hasil-card {
+  background: white;
+  border-radius: 28px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 10px 0 rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 360px;
+  width: 100%;
+  animation: pop 0.5s ease;
+}
+.hasil-emoji { font-size: 5rem; animation: bounce 1.5s ease-in-out infinite; }
+.hasil-judul {
+  font-size: 2.2rem;
+  color: var(--coklat);
+}
+.hasil-skor {
+  font-family: 'Fredoka One', cursive;
+  font-size: 4rem;
+  color: var(--biru);
+  line-height: 1;
+}
+.hasil-skor span { font-size: 1.6rem; color: #bbb; }
+.hasil-pesan { font-size: 1rem; font-weight: 700; color: #666; }
+.hasil-stars { font-size: 2.4rem; letter-spacing: 8px; }

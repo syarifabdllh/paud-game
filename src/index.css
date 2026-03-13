@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --merah: #E63946;
+  --kuning: #FFB703;
+  --hijau: #2DC653;
+  --biru: #0077B6;
+  --biru-muda: #48CAE4;
+  --oranye: #FB8500;
+  --ungu: #7B2D8B;
+  --krem: #FFF8E7;
+  --coklat: #5C3317;
+  --putih: #FFFFFF;
+  --shadow: 0 6px 0px rgba(0,0,0,0.2);
+  --shadow-sm: 0 3px 0px rgba(0,0,0,0.15);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--krem);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Fredoka One', cursive;
+}
+
+/* Batik pattern background */
+.batik-bg {
+  background-color: var(--krem);
+  background-image:
+    radial-gradient(circle at 20px 20px, rgba(230,57,70,0.07) 8px, transparent 8px),
+    radial-gradient(circle at 60px 60px, rgba(255,183,3,0.07) 8px, transparent 8px),
+    radial-gradient(circle at 100px 20px, rgba(45,198,83,0.07) 8px, transparent 8px);
+  background-size: 120px 80px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  position: relative;
+  top: 0;
+}
+
+.btn:active {
+  top: 4px;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-merah   { background: var(--merah); color: white; }
+.btn-kuning  { background: var(--kuning); color: var(--coklat); }
+.btn-hijau   { background: var(--hijau); color: white; }
+.btn-biru    { background: var(--biru); color: white; }
+.btn-oranye  { background: var(--oranye); color: white; }
+.btn-ungu    { background: var(--ungu); color: white; }
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+/* Bouncing stars decoration */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(10deg); }
+}
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
