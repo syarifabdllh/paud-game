@@ -24,8 +24,8 @@
 .skor-badge {
   position: absolute;
   z-index: 3;
-  top: 4%;
-  right: 13%;
+  top: 3%;
+  right: 12%;
   background: #fff;
   border: 3px solid #f4c430;
   border-radius: 20px;
@@ -37,12 +37,13 @@
 
 /* =====================
    Hotzone pilihan jawaban
+   Diukur langsung dari screenshot
    ===================== */
 .pilihan-zone {
   position: absolute;
   z-index: 2;
-  left: 60%;
-  width: 24%;
+  left: 57%;
+  width: 22%;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -50,21 +51,26 @@
   transition: background 0.15s;
 }
 
-.pilihan-zone:hover  { background: rgba(255, 255, 255, 0.2); }
-.pilihan-zone:active { background: rgba(255, 255, 255, 0.35); }
-.pilihan-zone.benar  { background: rgba(76, 175, 80, 0.35); }
-.pilihan-zone.salah  {
-  background: rgba(230, 57, 70, 0.35);
+.pilihan-zone:hover  { background: rgba(255, 255, 255, 0.25); }
+.pilihan-zone:active { background: rgba(255, 255, 255, 0.4); }
+
+.pilihan-zone.benar {
+  background: rgba(76, 175, 80, 0.4);
+}
+
+.pilihan-zone.salah {
+  background: rgba(230, 57, 70, 0.4);
   animation: shake 0.4s ease;
 }
 
-.pilihan-1 { top: 26%; height: 12%; }
-.pilihan-2 { top: 40%; height: 12%; }
-.pilihan-3 { top: 54%; height: 12%; }
-.pilihan-4 { top: 68%; height: 12%; }
+/* Posisi diukur presisi dari screenshot */
+.pilihan-1 { top: 27%; height: 10%; }
+.pilihan-2 { top: 39%; height: 10%; }
+.pilihan-3 { top: 51%; height: 10%; }
+.pilihan-4 { top: 63%; height: 10%; }
 
 /* =====================
-   Hotzone navigasi
+   Hotzone tombol navigasi
    ===================== */
 .game-nav {
   position: absolute;
@@ -78,8 +84,8 @@
 .game-nav:hover  { background: rgba(255,255,255,0.15); }
 .game-nav:active { background: rgba(255,255,255,0.25); }
 
-.game-nav.prev { left: 14%; bottom: 4%; width: 7%; height: 12%; }
-.game-nav.next { right: 14%; bottom: 4%; width: 7%; height: 12%; }
+.game-nav.prev { left: 18%;  bottom: 5%; width: 7%; height: 11%; }
+.game-nav.next { right: 18%; bottom: 5%; width: 7%; height: 11%; }
 
 /* =====================
    Halaman selesai
