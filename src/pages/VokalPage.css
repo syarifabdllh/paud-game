@@ -27,8 +27,14 @@
   border-radius: 16px;
 }
 
-/* Tombol < — kiri bawah, di dalam area gambar */
-.prev { left: 11%; bottom: 3%; width: 8%; height: 13%; }
+.vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
+.vokal-hotzone:active { background: rgba(255,255,255,0.25); }
 
-/* Tombol > — kanan bawah, di dalam area gambar */
-.next { right: 11%; bottom: 3%; width: 8%; height: 13%; }
+/* Tombol < — kiri bawah, pas di area tombol biru */
+.prev { left: 9%; bottom: 6%; width: 7%; height: 13%; }
+
+/* Tombol > — kanan bawah, pas di area tombol biru */
+.next { right: 8.5%; bottom: 6%; width: 7%; height: 13%; }
+
+/* Tombol Sound (Speaker) — kanan atas */
+.sound { right: 4%; top: 4%; width: 6%; height: 11%; border-radius: 50%; }
