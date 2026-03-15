@@ -1,146 +1,251 @@
-.game-page { gap: 16px; }
-
-.game-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 440px;
-}
-.skor-box {
-  background: var(--kuning);
-  border-radius: 50px;
-  padding: 6px 18px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  color: var(--coklat);
-  box-shadow: 0 3px 0 #cc9200;
-}
-.soal-num {
-  font-weight: 700;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-.progress-bar {
-  width: 100%;
-  max-width: 440px;
-  height: 12px;
-  background: #e0e0e0;
-  border-radius: 50px;
+.game-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(to right, var(--biru), var(--biru-muda));
-  border-radius: 50px;
-  transition: width 0.4s ease;
+  background: #87ceeb;
 }
 
-.soal-card {
-  background: white;
-  border-radius: 24px;
-  padding: 28px 24px;
-  text-align: center;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.08);
+.game-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  animation: pop 0.3s ease;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
 }
-.soal-card.shake {
+
+/* =====================
+   Kotak putih kiri
+   Berdasarkan asset: kotak ada di ~17%-43% horizontal, ~18%-68% vertikal
+   ===================== */
+.icon-box {
+  position: absolute;
+  z-index: 2;
+  left: 18%;
+  top: 18%;
+  width: 24%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.icon-box svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* =====================
+   Drop zone oval bawah kotak
+   Berdasarkan asset: oval ada di ~18%-42% horizontal, ~70%-82% vertikal
+   ===================== */
+.drop-zone {
+  position: absolute;
+  z-index: 2;
+  left: 18%;
+  top: 70%;
+  width: 24%;
+  height: 11%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  border: 3px dashed rgba(0,0,0,0.15);
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.drop-zone:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+.drop-zone.benar {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.drop-zone.salah {
+  border-color: #e63946;
+  background: rgba(230, 57, 70, 0.2);
   animation: shake 0.4s ease;
 }
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%       { transform: translateX(-10px); }
-  40%       { transform: translateX(10px); }
-  60%       { transform: translateX(-8px); }
-  80%       { transform: translateX(8px); }
+
+.drop-hint {
+  color: rgba(0,0,0,0.35);
+  font-size: 0.8rem;
+  font-weight: 500;
+  pointer-events: none;
 }
 
-.soal-pertanyaan {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #666;
-}
-.soal-gambar { font-size: 5rem; line-height: 1; }
-.hint-box {
-  background: #fff3cd;
-  border-radius: 10px;
-  padding: 6px 14px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #856404;
-  animation: pop 0.2s ease;
+.drop-text {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #333;
+  pointer-events: none;
 }
 
-/* Pilihan jawaban */
-.pilihan-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  width: 100%;
-  max-width: 440px;
-}
-
-.pilihan-btn {
-  padding: 20px 12px;
-  border: none;
-  border-radius: 18px;
-  background: var(--biru);
-  color: white;
-  font-family: 'Fredoka One', cursive;
-  font-size: 2rem;
-  cursor: pointer;
-  box-shadow: 0 6px 0 #005580;
-  transition: all 0.15s;
-  position: relative;
-  top: 0;
-}
-.pilihan-btn:hover:not(:disabled) { filter: brightness(1.1); }
-.pilihan-btn:active:not(:disabled) { top: 4px; box-shadow: 0 2px 0 #005580; }
-.pilihan-btn:disabled { cursor: default; }
-.pilihan-btn.benar {
-  background: var(--hijau);
-  box-shadow: 0 6px 0 #1e8f3a;
-  animation: pop 0.3s ease;
-}
-.pilihan-btn.salah {
-  background: var(--merah);
-  box-shadow: 0 6px 0 #b02030;
-}
-
-/* Layar hasil */
-.hasil-screen { justify-content: center; }
-.hasil-card {
-  background: white;
-  border-radius: 28px;
-  padding: 40px 32px;
-  text-align: center;
-  box-shadow: 0 10px 0 rgba(0,0,0,0.1);
+/* =====================
+   Pilihan 1-4 di kanan
+   Berdasarkan asset: pilihan ada di ~53%-78% horizontal, ~22%-82% vertikal
+   ===================== */
+.pilihan-wrap {
+  position: absolute;
+  z-index: 2;
+  left: 53%;
+  top: 22%;
+  width: 25%;
+  height: 60%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.pilihan {
+  flex: 1;
+  display: flex;
   align-items: center;
-  gap: 14px;
-  max-width: 360px;
-  width: 100%;
-  animation: pop 0.5s ease;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 3px solid rgba(255,255,255,0.6);
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #333;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.15s, background 0.2s, border-color 0.2s;
+  margin: 3px 0;
 }
-.hasil-emoji { font-size: 5rem; animation: bounce 1.5s ease-in-out infinite; }
-.hasil-judul {
+
+.pilihan:hover {
+  transform: scale(1.04);
+  background: rgba(255,255,255,0.95);
+  border-color: #f4c430;
+}
+
+.pilihan:active {
+  cursor: grabbing;
+  transform: scale(0.97);
+}
+
+.pilihan.benar {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.25);
+  color: #2e7d32;
+}
+
+.pilihan.salah {
+  border-color: #e63946;
+  background: rgba(230, 57, 70, 0.2);
+  color: #c62828;
+}
+
+/* =====================
+   Skor badge
+   ===================== */
+.skor-badge {
+  position: absolute;
+  z-index: 3;
+  top: 5%;
+  right: 14%;
+  background: #fff;
+  border: 3px solid #f4c430;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #333;
+}
+
+/* =====================
+   Hotzone tombol navigasi
+   ===================== */
+.game-nav {
+  position: absolute;
+  z-index: 4;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.game-nav:hover  { background: rgba(255,255,255,0.15); }
+.game-nav:active { background: rgba(255,255,255,0.25); }
+
+.game-nav.prev { left: 11%; bottom: 3%; width: 8%; height: 13%; }
+.game-nav.next { right: 11%; bottom: 3%; width: 8%; height: 13%; }
+
+/* =====================
+   Halaman selesai
+   ===================== */
+.game-selesai {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #87ceeb, #a8edea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selesai-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px 56px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+.selesai-emoji { font-size: 4rem; margin-bottom: 8px; }
+
+.selesai-card h1 {
   font-size: 2.2rem;
-  color: var(--coklat);
+  font-weight: 800;
+  color: #333;
+  margin: 0 0 4px;
 }
-.hasil-skor {
-  font-family: 'Fredoka One', cursive;
-  font-size: 4rem;
-  color: var(--biru);
-  line-height: 1;
+
+.selesai-card p {
+  color: #888;
+  margin: 0 0 8px;
 }
-.hasil-skor span { font-size: 1.6rem; color: #bbb; }
-.hasil-pesan { font-size: 1rem; font-weight: 700; color: #666; }
-.hasil-stars { font-size: 2.4rem; letter-spacing: 8px; }
+
+.selesai-skor {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #f4c430;
+  margin-bottom: 24px;
+}
+
+.selesai-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn-ulangi, .btn-menu {
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.btn-ulangi { background: #3a86ff; color: #fff; }
+.btn-menu   { background: #f4c430; color: #333; }
+
+.btn-ulangi:hover, .btn-menu:hover { transform: scale(1.05); }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
