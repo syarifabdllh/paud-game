@@ -20,54 +20,54 @@
 
 /* =====================
    Kotak putih kiri
-   Berdasarkan asset: kotak ada di ~17%-43% horizontal, ~18%-68% vertikal
+   Di dalam kotak bergaris hitam di asset
    ===================== */
 .icon-box {
   position: absolute;
   z-index: 2;
-  left: 18%;
-  top: 18%;
-  width: 24%;
-  height: 50%;
+  left: 26%;
+  top: 20%;
+  width: 18%;
+  height: 42%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
 }
 
-.icon-box svg {
-  width: 100%;
-  height: 100%;
+.icon-emoji {
+  font-size: 5rem;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* =====================
    Drop zone oval bawah kotak
-   Berdasarkan asset: oval ada di ~18%-42% horizontal, ~70%-82% vertikal
    ===================== */
 .drop-zone {
   position: absolute;
   z-index: 2;
-  left: 18%;
-  top: 70%;
-  width: 24%;
-  height: 11%;
+  left: 24%;
+  top: 65%;
+  width: 22%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  border: 3px dashed rgba(0,0,0,0.15);
-  background: rgba(255,255,255,0.25);
+  border: 3px dashed rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.3);
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
 
 .drop-zone:hover {
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.5);
 }
 
 .drop-zone.benar {
   border-color: #4caf50;
-  background: rgba(76, 175, 80, 0.2);
+  background: rgba(76, 175, 80, 0.25);
 }
 
 .drop-zone.salah {
@@ -78,7 +78,7 @@
 
 .drop-hint {
   color: rgba(0,0,0,0.35);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
   pointer-events: none;
 }
@@ -91,20 +91,19 @@
 }
 
 /* =====================
-   Pilihan 1-4 di kanan
-   Berdasarkan asset: pilihan ada di ~53%-78% horizontal, ~22%-82% vertikal
+   Pilihan 1-4
+   Di sisi kanan background
    ===================== */
 .pilihan-wrap {
   position: absolute;
   z-index: 2;
-  left: 53%;
-  top: 22%;
-  width: 25%;
-  height: 60%;
+  left: 54%;
+  top: 18%;
+  width: 26%;
+  height: 62%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 0;
+  gap: 6px;
 }
 
 .pilihan {
@@ -112,39 +111,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.85);
-  border: 3px solid rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(255,255,255,0.5);
   border-radius: 30px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #333;
-  cursor: grab;
+  cursor: pointer;
   user-select: none;
   transition: transform 0.15s, background 0.2s, border-color 0.2s;
-  margin: 3px 0;
+  font-family: inherit;
 }
 
 .pilihan:hover {
-  transform: scale(1.04);
+  transform: scale(1.03);
   background: rgba(255,255,255,0.95);
   border-color: #f4c430;
 }
 
 .pilihan:active {
-  cursor: grabbing;
   transform: scale(0.97);
 }
 
 .pilihan.benar {
   border-color: #4caf50;
-  background: rgba(76, 175, 80, 0.25);
-  color: #2e7d32;
+  background: rgba(76, 175, 80, 0.3);
+  color: #1b5e20;
 }
 
 .pilihan.salah {
   border-color: #e63946;
   background: rgba(230, 57, 70, 0.2);
-  color: #c62828;
+  color: #b71c1c;
 }
 
 /* =====================
@@ -153,19 +151,19 @@
 .skor-badge {
   position: absolute;
   z-index: 3;
-  top: 5%;
-  right: 14%;
+  top: 4%;
+  right: 13%;
   background: #fff;
   border: 3px solid #f4c430;
   border-radius: 20px;
-  padding: 4px 14px;
+  padding: 3px 14px;
   font-size: 1rem;
   font-weight: 800;
   color: #333;
 }
 
 /* =====================
-   Hotzone tombol navigasi
+   Hotzone navigasi
    ===================== */
 .game-nav {
   position: absolute;
@@ -241,11 +239,10 @@
 
 .btn-ulangi { background: #3a86ff; color: #fff; }
 .btn-menu   { background: #f4c430; color: #333; }
-
 .btn-ulangi:hover, .btn-menu:hover { transform: scale(1.05); }
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
+  25%       { transform: translateX(-8px); }
+  75%       { transform: translateX(8px); }
 }
