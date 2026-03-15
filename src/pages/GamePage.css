@@ -37,18 +37,12 @@
 
 /* =====================
    Hotzone pilihan jawaban
-   Posisi berdasarkan layout asset (semua soal sama)
-   Pilihan ada di sisi kanan: ~57%-83% horizontal
-   Pilihan 1: ~22%-38% vertikal
-   Pilihan 2: ~38%-54% vertikal
-   Pilihan 3: ~54%-70% vertikal
-   Pilihan 4: ~70%-86% vertikal
    ===================== */
 .pilihan-zone {
   position: absolute;
   z-index: 2;
-  left: 57%;
-  width: 26%;
+  left: 60%;
+  width: 24%;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -58,17 +52,16 @@
 
 .pilihan-zone:hover  { background: rgba(255, 255, 255, 0.2); }
 .pilihan-zone:active { background: rgba(255, 255, 255, 0.35); }
-
 .pilihan-zone.benar  { background: rgba(76, 175, 80, 0.35); }
 .pilihan-zone.salah  {
   background: rgba(230, 57, 70, 0.35);
   animation: shake 0.4s ease;
 }
 
-.pilihan-1 { top: 22%; height: 14%; }
-.pilihan-2 { top: 38%; height: 14%; }
-.pilihan-3 { top: 54%; height: 14%; }
-.pilihan-4 { top: 70%; height: 14%; }
+.pilihan-1 { top: 26%; height: 12%; }
+.pilihan-2 { top: 40%; height: 12%; }
+.pilihan-3 { top: 54%; height: 12%; }
+.pilihan-4 { top: 68%; height: 12%; }
 
 /* =====================
    Hotzone navigasi
@@ -85,8 +78,8 @@
 .game-nav:hover  { background: rgba(255,255,255,0.15); }
 .game-nav:active { background: rgba(255,255,255,0.25); }
 
-.game-nav.prev { left: 11%; bottom: 3%; width: 8%; height: 13%; }
-.game-nav.next { right: 11%; bottom: 3%; width: 8%; height: 13%; }
+.game-nav.prev { left: 14%; bottom: 4%; width: 7%; height: 12%; }
+.game-nav.next { right: 14%; bottom: 4%; width: 7%; height: 12%; }
 
 /* =====================
    Halaman selesai
