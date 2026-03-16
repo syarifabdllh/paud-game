@@ -26,6 +26,7 @@ export default function VokalPage() {
       />
       <button className="vokal-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="vokal-hotzone next" onClick={next} aria-label="Berikutnya" />
+      <button className="vokal-hotzone back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
     </div>
   );
 }

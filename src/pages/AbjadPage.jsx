@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AbjadPage.css';
 
 export default function AbjadPage() {
-  const [index, setIndex] = useState(0); // 0 = huruf A (file 1.png)
+  const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
   const prev = () => {
@@ -26,6 +26,7 @@ export default function AbjadPage() {
       />
       <button className="abjad-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="abjad-hotzone next" onClick={next} aria-label="Berikutnya" />
+      <button className="abjad-hotzone back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
     </div>
   );
 }

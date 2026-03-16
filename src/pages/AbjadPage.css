@@ -30,8 +30,17 @@
 .abjad-hotzone:hover  { background: rgba(255,255,255,0.15); }
 .abjad-hotzone:active { background: rgba(255,255,255,0.25); }
 
-/* Tombol < — kiri bawah, pas di area tombol biru */
 .prev { left: 7.5%; bottom: 4.5%; width: 6.5%; height: 11.5%; }
-
-/* Tombol > — kanan bawah, pas di area tombol biru */
 .next { right: 7.5%; bottom: 4.5%; width: 6.5%; height: 11.5%; }
+
+/* Tombol back ke menu — pojok kanan atas */
+.back {
+  right: 1.5%;
+  top: 1.5%;
+  width: 9%;
+  height: 12%;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+}
+.back:hover  { background: rgba(255,255,255,0.45); }
+.back:active { background: rgba(255,255,255,0.6); }

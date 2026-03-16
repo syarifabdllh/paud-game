@@ -107,6 +107,9 @@ export default function GamePage() {
         />
       ))}
 
+      {/* Tombol back ke menu */}
+      <button className="game-nav back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
+
       {/* Hotzone tombol navigasi */}
       <button className="game-nav prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="game-nav next" onClick={next} aria-label="Berikutnya" />
