@@ -1,13 +1,7 @@
 .membaca-page {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 100vw;
   height: 100vh;
-  /* Mengunci rasio agar gambar dan hotzone tidak melar/bergeser di layar HP */
-  max-width: calc(100vh * (16 / 9));
-  max-height: calc(100vw * (9 / 16));
   overflow: hidden;
   background: #87ceeb;
 }
@@ -17,16 +11,13 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: contain;
   object-position: center center;
   user-select: none;
   pointer-events: none;
   z-index: 0;
 }
 
-/* =========================================================
-   Pengaturan Hotzone Halaman Membaca
-   ========================================================= */
 .membaca-hotzone {
   position: absolute;
   z-index: 2;
@@ -39,8 +30,8 @@
 .membaca-hotzone:hover  { background: rgba(255,255,255,0.15); }
 .membaca-hotzone:active { background: rgba(255,255,255,0.25); }
 
-/* Tombol < — kiri bawah */
+/* Tombol < — kiri bawah, pas di area tombol biru */
 .prev { left: 7%; bottom: 4%; width: 6.5%; height: 12%; }
 
-/* Tombol > — kanan bawah */
+/* Tombol > — kanan bawah, pas di area tombol biru */
 .next { right: 7%; bottom: 4%; width: 6.5%; height: 12%; }
