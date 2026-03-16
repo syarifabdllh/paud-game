@@ -37,13 +37,12 @@
 
 /* =====================
    Hotzone pilihan jawaban
-   Diukur langsung dari screenshot
    ===================== */
 .pilihan-zone {
   position: absolute;
   z-index: 2;
-  left: 57%;
-  width: 22%;
+  left: 56.2%; 
+  width: 19.5%; 
   background: transparent;
   border: none;
   cursor: pointer;
@@ -63,11 +62,11 @@
   animation: shake 0.4s ease;
 }
 
-/* Posisi diukur presisi dari screenshot */
-.pilihan-1 { top: 27%; height: 10%; }
-.pilihan-2 { top: 39%; height: 10%; }
-.pilihan-3 { top: 51%; height: 10%; }
-.pilihan-4 { top: 63%; height: 10%; }
+/* Posisi diukur presisi */
+.pilihan-1 { top: 32.5%; height: 9.5%; }
+.pilihan-2 { top: 46.5%; height: 9.5%; }
+.pilihan-3 { top: 60.5%; height: 9.5%; }
+.pilihan-4 { top: 74.5%; height: 9.5%; }
 
 /* =====================
    Hotzone tombol navigasi
@@ -84,8 +83,8 @@
 .game-nav:hover  { background: rgba(255,255,255,0.15); }
 .game-nav:active { background: rgba(255,255,255,0.25); }
 
-.game-nav.prev { left: 18%;  bottom: 5%; width: 7%; height: 11%; }
-.game-nav.next { right: 18%; bottom: 5%; width: 7%; height: 11%; }
+.game-nav.prev { left: 19.5%; bottom: 3.5%; width: 6.5%; height: 11.5%; }
+.game-nav.next { right: 18.5%; bottom: 3.5%; width: 6.5%; height: 11.5%; }
 
 /* =====================
    Halaman selesai

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 import './AbjadPage.css';
 
 export default function AbjadPage() {
@@ -24,9 +25,9 @@ export default function AbjadPage() {
         className="abjad-bg"
         draggable={false}
       />
+      <BackButton />
       <button className="abjad-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="abjad-hotzone next" onClick={next} aria-label="Berikutnya" />
-      <button className="abjad-hotzone back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
     </div>
   );
 }

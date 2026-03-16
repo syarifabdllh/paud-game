@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 import './VokalPage.css';
 
 export default function VokalPage() {
@@ -24,9 +25,9 @@ export default function VokalPage() {
         className="vokal-bg"
         draggable={false}
       />
+      <BackButton />
       <button className="vokal-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="vokal-hotzone next" onClick={next} aria-label="Berikutnya" />
-      <button className="vokal-hotzone back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 import './MembacaPage.css';
 
 export default function MembacaPage() {
@@ -24,9 +25,9 @@ export default function MembacaPage() {
         className="membaca-bg"
         draggable={false}
       />
+      <BackButton />
       <button className="membaca-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="membaca-hotzone next" onClick={next} aria-label="Berikutnya" />
-      <button className="membaca-hotzone back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
     </div>
   );
 }

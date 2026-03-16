@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 import './GamePage.css';
 
 const SOAL = [
@@ -18,7 +19,7 @@ const SOAL = [
 export default function GamePage() {
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
-  const [status, setStatus] = useState(null); // null | 'benar' | 'salah'
+  const [status, setStatus] = useState(null);
   const [salahIndex, setSalahIndex] = useState(null);
   const [skor, setSkor] = useState(0);
   const [selesai, setSelesai] = useState(false);
@@ -83,18 +84,14 @@ export default function GamePage() {
 
   return (
     <div className="game-page">
-      {/* Background gambar soal */}
       <img
         src={`/assets/game/${soal.id}.png`}
         alt={`Soal ${soal.id}`}
         className="game-bg"
         draggable={false}
       />
-
-      {/* Skor badge */}
+      <BackButton />
       <div className="skor-badge">{skor}/{SOAL.length}</div>
-
-      {/* Hotzone 4 pilihan jawaban — di atas teks pilihan di gambar */}
       {soal.pilihan.map((p, i) => (
         <button
           key={i}
@@ -106,11 +103,6 @@ export default function GamePage() {
           aria-label={p}
         />
       ))}
-
-      {/* Tombol back ke menu */}
-      <button className="game-nav back" onClick={() => navigate('/menu')} aria-label="Kembali ke Menu" />
-
-      {/* Hotzone tombol navigasi */}
       <button className="game-nav prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="game-nav next" onClick={next} aria-label="Berikutnya" />
     </div>
