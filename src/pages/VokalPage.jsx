@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './VokalPage.css';
 
+const AUDIO = ['a', 'i', 'u', 'e', 'o'];
+
 export default function VokalPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const audio = new Audio(`/assets/audio/${AUDIO[index]}.mp3`);
+    audio.play().catch(() => {});
+    return () => { audio.pause(); audio.src = ''; };
+  }, [index]);
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);

@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './AbjadPage.css';
 
+const AUDIO = [
+  'a','b','c','d','e','f',null,'h','i','j',
+  'k','l','m','n','o','p','q','r','s','t',
+  'u','v',null,'x','y','z'
+];
+
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const file = AUDIO[index];
+    if (!file) return;
+    const audio = new Audio(`/assets/audio/${file}.mp3`);
+    audio.play().catch(() => {});
+    return () => { audio.pause(); audio.src = ''; };
+  }, [index]);
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);

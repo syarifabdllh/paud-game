@@ -1,11 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './MembacaPage.css';
 
+const AUDIO = [
+  'sapi makan rumput',
+  'adik minum susu',
+  'ibu masak telur',
+  'ayah baca koran',
+  'kakak main bola',
+  'kucing tidur diteras',
+  'pipi beli boneka',
+  'budi naik sepeda',
+  'balon terbang ke langit',
+  'ikan berenang dikolam',
+];
+
 export default function MembacaPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const audio = new Audio(`/assets/audio/${AUDIO[index]}.mp3`);
+    audio.play().catch(() => {});
+    return () => { audio.pause(); audio.src = ''; };
+  }, [index]);
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);
