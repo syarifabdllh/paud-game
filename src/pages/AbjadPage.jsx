@@ -4,9 +4,9 @@ import BackButton from '../components/BackButton';
 import './AbjadPage.css';
 
 const AUDIO = [
-  'a','b','c','d','e','f',null,'h','i','j',
+  'a','b','c','d','e','f',g,'h','i','j',
   'k','l','m','n','o','p','q','r','s','t',
-  'u','v',null,'x','y','z'
+  'u','v',w,'x','y','z'
 ];
 
 export default function AbjadPage() {
