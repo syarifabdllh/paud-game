@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './AbjadPage.css';
@@ -11,6 +11,7 @@ const AUDIO = [
 
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
+  const [started, setStarted] = useState(false);
   const navigate = useNavigate();
   const audioRef = useRef(null);
 
@@ -24,23 +25,30 @@ export default function AbjadPage() {
     audio.play().catch(() => {});
   };
 
-  const goTo = (idx) => {
-    setIndex(idx);
-    playAudio(idx);
+  useEffect(() => {
+    if (started) playAudio(index);
+  }, [index, started]);
+
+  // Sentuhan pertama di mana saja di layar → mulai audio
+  const handleFirstTouch = () => {
+    if (!started) {
+      setStarted(true);
+      playAudio(0);
+    }
   };
 
   const prev = () => {
-    if (index > 0) goTo(index - 1);
+    if (index > 0) setIndex(index - 1);
     else navigate('/menu');
   };
 
   const next = () => {
-    if (index < 25) goTo(index + 1);
+    if (index < 25) setIndex(index + 1);
     else navigate('/menu');
   };
 
   return (
-    <div className="abjad-page">
+    <div className="abjad-page" onClick={handleFirstTouch}>
       <img
         src={`/assets/${index + 1}.png`}
         alt={`Huruf ke-${index + 1}`}
@@ -48,7 +56,6 @@ export default function AbjadPage() {
         draggable={false}
       />
 
-      {/* Klik kotak kartu → putar ulang suara huruf aktif */}
       <button
         className="abjad-hotzone card-zone"
         onClick={() => playAudio(index)}
