@@ -1,17 +1,16 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './VokalPage.css';
 
 const VOKAL = ['a', 'i', 'u', 'e', 'o'];
 
-// Posisi kartu AKTIF per slide [top%, left%, width%, height%]
 const ACTIVE_CARD = [
-  { top: 17, left: 8,  width: 26, height: 70 }, // Aa — kartu besar kiri
-  { top: 15, left: 35, width: 26, height: 70 }, // Ii — kartu besar tengah-kiri
-  { top: 15, left: 38, width: 26, height: 70 }, // Uu — kartu besar tengah
-  { top: 15, left: 51, width: 26, height: 70 }, // Ee — kartu besar tengah-kanan
-  { top: 17, left: 65, width: 26, height: 70 }, // Oo — kartu besar kanan
+  { top: 17, left: 8,  width: 26, height: 70 },
+  { top: 15, left: 35, width: 26, height: 70 },
+  { top: 15, left: 38, width: 26, height: 70 },
+  { top: 15, left: 51, width: 26, height: 70 },
+  { top: 17, left: 65, width: 26, height: 70 },
 ];
 
 export default function VokalPage() {
@@ -29,18 +28,18 @@ export default function VokalPage() {
     audio.play().catch(() => {});
   };
 
-  const goTo = (idx) => {
-    setIndex(idx);
-    playAudio(idx);
-  };
+  // Autoplay setiap kali index berubah (termasuk saat pertama masuk)
+  useEffect(() => {
+    playAudio(index);
+  }, [index]);
 
   const prev = () => {
-    if (index > 0) goTo(index - 1);
+    if (index > 0) setIndex(index - 1);
     else navigate('/menu');
   };
 
   const next = () => {
-    if (index < 4) goTo(index + 1);
+    if (index < 4) setIndex(index + 1);
     else navigate('/menu');
   };
 
@@ -55,7 +54,6 @@ export default function VokalPage() {
         draggable={false}
       />
 
-      {/* Hanya 1 hotzone — kartu aktif saja */}
       <button
         className="vokal-hotzone"
         style={{

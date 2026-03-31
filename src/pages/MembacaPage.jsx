@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './MembacaPage.css';
@@ -31,18 +31,18 @@ export default function MembacaPage() {
     audio.play().catch(() => {});
   };
 
-  const goTo = (idx) => {
-    setIndex(idx);
-    playAudio(idx);
-  };
+  // Autoplay setiap kali index berubah (termasuk saat pertama masuk)
+  useEffect(() => {
+    playAudio(index);
+  }, [index]);
 
   const prev = () => {
-    if (index > 0) goTo(index - 1);
+    if (index > 0) setIndex(index - 1);
     else navigate('/menu');
   };
 
   const next = () => {
-    if (index < 9) goTo(index + 1);
+    if (index < 9) setIndex(index + 1);
     else navigate('/menu');
   };
 
@@ -55,7 +55,6 @@ export default function MembacaPage() {
         draggable={false}
       />
 
-      {/* Hotzone di atas kotak kartu tengah */}
       <button
         className="membaca-hotzone card-zone"
         onClick={() => playAudio(index)}
