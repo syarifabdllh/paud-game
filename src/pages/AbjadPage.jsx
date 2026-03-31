@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
+import HotZone from '../components/HotZone';
+import useImageBounds from '../components/useImageBounds';
 import './AbjadPage.css';
 
 const AUDIO = [
@@ -9,11 +11,18 @@ const AUDIO = [
   'u','v','w','x','y','z'
 ];
 
+// Posisi dalam % terhadap gambar asli
+const CARD   = { top: 15, left: 22, width: 55, height: 65 };
+const BTN_PREV = { top: 82, left: 7,  width: 8,  height: 13 };
+const BTN_NEXT = { top: 82, left: 85, width: 8,  height: 13 };
+
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
   const audioRef = useRef(null);
+  const imgRef = useRef(null);
   const startedRef = useRef(false);
+  const bounds = useImageBounds(imgRef);
 
   const playAudio = (idx) => {
     if (audioRef.current) {
@@ -26,18 +35,11 @@ export default function AbjadPage() {
   };
 
   useEffect(() => {
-    // Coba autoplay langsung, kalau gagal tunggu interaksi
     const audio = new Audio(`/assets/audio/${AUDIO[0]}.mp3`);
     audioRef.current = audio;
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => { startedRef.current = true; })
-        .catch(() => {
-          // Browser blokir autoplay, tunggu klik pertama
-          startedRef.current = false;
-        });
-    }
+    audio.play()
+      .then(() => { startedRef.current = true; })
+      .catch(() => { startedRef.current = false; });
     return () => { audio.pause(); audio.src = ''; };
   }, []);
 
@@ -65,21 +67,17 @@ export default function AbjadPage() {
   return (
     <div className="abjad-page" onClick={handleFirstTouch}>
       <img
+        ref={imgRef}
         src={`/assets/${index + 1}.png`}
         alt={`Huruf ke-${index + 1}`}
         className="abjad-bg"
         draggable={false}
       />
 
-      <button
-        className="abjad-hotzone card-zone"
-        onClick={() => playAudio(index)}
-        aria-label={`Putar suara huruf ${AUDIO[index]}`}
-      />
-
+      <HotZone bounds={bounds} {...CARD}     onClick={() => playAudio(index)} ariaLabel={`Putar huruf ${AUDIO[index]}`} />
+      <HotZone bounds={bounds} {...BTN_PREV} onClick={prev} ariaLabel="Sebelumnya" />
+      <HotZone bounds={bounds} {...BTN_NEXT} onClick={next} ariaLabel="Berikutnya" />
       <BackButton />
-      <button className="abjad-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
-      <button className="abjad-hotzone next" onClick={next} aria-label="Berikutnya" />
     </div>
   );
 }

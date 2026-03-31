@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
+import HotZone from '../components/HotZone';
+import useImageBounds from '../components/useImageBounds';
 import './MembacaPage.css';
 
 const AUDIO = [
@@ -16,10 +18,17 @@ const AUDIO = [
   'ikan berenang dikolam',
 ];
 
+const CARD    = { top: 28, left: 21, width: 58, height: 58 };
+const BTN_PREV = { top: 83, left: 5,  width: 8,  height: 13 };
+const BTN_NEXT = { top: 83, left: 87, width: 8,  height: 13 };
+
 export default function MembacaPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
   const audioRef = useRef(null);
+  const imgRef = useRef(null);
+  const startedRef = useRef(false);
+  const bounds = useImageBounds(imgRef);
 
   const playAudio = (idx) => {
     if (audioRef.current) {
@@ -31,10 +40,25 @@ export default function MembacaPage() {
     audio.play().catch(() => {});
   };
 
-  // Autoplay setiap kali index berubah (termasuk saat pertama masuk)
   useEffect(() => {
-    playAudio(index);
+    const audio = new Audio(`/assets/audio/${AUDIO[0]}.mp3`);
+    audioRef.current = audio;
+    audio.play()
+      .then(() => { startedRef.current = true; })
+      .catch(() => { startedRef.current = false; });
+    return () => { audio.pause(); audio.src = ''; };
+  }, []);
+
+  useEffect(() => {
+    if (startedRef.current && index > 0) playAudio(index);
   }, [index]);
+
+  const handleFirstTouch = () => {
+    if (!startedRef.current) {
+      startedRef.current = true;
+      playAudio(index);
+    }
+  };
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);
@@ -47,23 +71,19 @@ export default function MembacaPage() {
   };
 
   return (
-    <div className="membaca-page">
+    <div className="membaca-page" onClick={handleFirstTouch}>
       <img
+        ref={imgRef}
         src={`/assets/membaca/${index + 1}.png`}
         alt={`Cerita ke-${index + 1}`}
         className="membaca-bg"
         draggable={false}
       />
 
-      <button
-        className="membaca-hotzone card-zone"
-        onClick={() => playAudio(index)}
-        aria-label={`Putar suara: ${AUDIO[index]}`}
-      />
-
+      <HotZone bounds={bounds} {...CARD}     onClick={() => playAudio(index)} ariaLabel={`Putar: ${AUDIO[index]}`} />
+      <HotZone bounds={bounds} {...BTN_PREV} onClick={prev} ariaLabel="Sebelumnya" />
+      <HotZone bounds={bounds} {...BTN_NEXT} onClick={next} ariaLabel="Berikutnya" />
       <BackButton />
-      <button className="membaca-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
-      <button className="membaca-hotzone next" onClick={next} aria-label="Berikutnya" />
     </div>
   );
 }

@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
+import HotZone from '../components/HotZone';
+import useImageBounds from '../components/useImageBounds';
 import './GamePage.css';
 
 const SOAL = [
@@ -16,8 +18,22 @@ const SOAL = [
   { id: 10, jawaban: 'Buku',    pilihan: ['Yoyo', 'Wayang', 'Buku', "Qur'an"] },
 ];
 
+// Posisi 4 pilihan jawaban (% terhadap gambar asli)
+const PILIHAN_POS = [
+  { top: 68, left: 5,  width: 20, height: 18 }, // pilihan 1
+  { top: 68, left: 28, width: 20, height: 18 }, // pilihan 2
+  { top: 68, left: 53, width: 20, height: 18 }, // pilihan 3
+  { top: 68, left: 76, width: 20, height: 18 }, // pilihan 4
+];
+
+const BTN_PREV = { top: 83, left: 5,  width: 8, height: 13 };
+const BTN_NEXT = { top: 83, left: 87, width: 8, height: 13 };
+
 export default function GamePage() {
   const navigate = useNavigate();
+  const imgRef = useRef(null);
+  const bounds = useImageBounds(imgRef);
+
   const [index, setIndex] = useState(0);
   const [status, setStatus] = useState(null);
   const [salahIndex, setSalahIndex] = useState(null);
@@ -70,12 +86,11 @@ export default function GamePage() {
           <p>Skor kamu</p>
           <div className="selesai-skor">{skor} / {SOAL.length}</div>
           <div className="selesai-btns">
-            <button className="btn-ulangi" onClick={() => { setIndex(0); setSkor(0); setStatus(null); setSalahIndex(null); setSelesai(false); }}>
-              Ulangi
-            </button>
-            <button className="btn-menu" onClick={() => navigate('/menu')}>
-              Menu
-            </button>
+            <button className="btn-ulangi" onClick={() => {
+              setIndex(0); setSkor(0); setStatus(null);
+              setSalahIndex(null); setSelesai(false);
+            }}>Ulangi</button>
+            <button className="btn-menu" onClick={() => navigate('/menu')}>Menu</button>
           </div>
         </div>
       </div>
@@ -85,26 +100,32 @@ export default function GamePage() {
   return (
     <div className="game-page">
       <img
+        ref={imgRef}
         src={`/assets/game/${soal.id}.png`}
         alt={`Soal ${soal.id}`}
         className="game-bg"
         draggable={false}
       />
+
       <BackButton />
       <div className="skor-badge">{skor}/{SOAL.length}</div>
+
       {soal.pilihan.map((p, i) => (
-        <button
+        <HotZone
           key={i}
-          className={`pilihan-zone pilihan-${i + 1}
-            ${status === 'benar' && p === soal.jawaban ? ' benar' : ''}
-            ${salahIndex === i ? ' salah' : ''}
-          `}
+          bounds={bounds}
+          {...PILIHAN_POS[i]}
           onClick={() => handlePilih(p, i)}
-          aria-label={p}
+          ariaLabel={p}
+          className={`pilihan-feedback
+            ${status === 'benar' && p === soal.jawaban ? 'benar' : ''}
+            ${salahIndex === i ? 'salah' : ''}
+          `}
         />
       ))}
-      <button className="game-nav prev" onClick={prev} aria-label="Sebelumnya" />
-      <button className="game-nav next" onClick={next} aria-label="Berikutnya" />
+
+      <HotZone bounds={bounds} {...BTN_PREV} onClick={prev} ariaLabel="Sebelumnya" />
+      <HotZone bounds={bounds} {...BTN_NEXT} onClick={next} ariaLabel="Berikutnya" />
     </div>
   );
 }
