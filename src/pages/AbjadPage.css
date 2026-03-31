@@ -27,6 +27,9 @@
   border-radius: 16px;
 }
 
+.abjad-hotzone:hover  { background: rgba(255,255,255,0.15); }
+.abjad-hotzone:active { background: rgba(255,255,255,0.25); }
+
 /* Area klik di atas kotak kartu huruf */
 .card-zone {
   top: 15%;
@@ -38,30 +41,8 @@
   border-radius: 20px;
 }
 
-/* Tombol speaker pojok kanan atas */
-.abjad-speaker {
-  position: absolute;
-  top: 3%;
-  right: 4%;
-  z-index: 3;
-  background: rgba(255,255,255,0.85);
-  border: none;
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-.abjad-speaker:active {
-  transform: scale(0.9);
-}
-
-.abjad-hotzone:hover  { background: rgba(255,255,255,0.15); }
-.abjad-hotzone:active { background: rgba(255,255,255,0.25); }
-
-/* Tombol < — kiri bawah, pas di area tombol biru */
+/* Tombol < kiri bawah */
 .prev { left: 7.5%; bottom: 4.5%; width: 6.5%; height: 11.5%; }
 
-/* Tombol > — kanan bawah, pas di area tombol biru */
+/* Tombol > kanan bawah */
 .next { right: 7.5%; bottom: 4.5%; width: 6.5%; height: 11.5%; }

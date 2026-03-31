@@ -27,7 +27,10 @@
   border-radius: 16px;
 }
 
-/* Kartu besar kiri — putar suara huruf aktif */
+.vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
+.vokal-hotzone:active { background: rgba(255,255,255,0.25); }
+
+/* Kartu besar kiri */
 .card-main {
   top: 17%;
   left: 8%;
@@ -36,7 +39,7 @@
   border-radius: 20px;
 }
 
-/* Kartu-kartu kecil kanan — masing-masing 4 kartu */
+/* Kartu kecil kanan */
 .card-mini {
   top: 30%;
   height: 42%;
@@ -48,14 +51,8 @@
 .card-mini-3 { left: 69%; }
 .card-mini-4 { left: 83%; }
 
-.vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
-.vokal-hotzone:active { background: rgba(255,255,255,0.25); }
-
-/* Tombol < — kiri bawah, pas di area tombol biru */
+/* Tombol < kiri bawah */
 .prev { left: 9%; bottom: 6%; width: 7%; height: 13%; }
 
-/* Tombol > — kanan bawah, pas di area tombol biru */
+/* Tombol > kanan bawah */
 .next { right: 8.5%; bottom: 6%; width: 7%; height: 13%; }
-
-/* Tombol Sound (Speaker) — kanan atas */
-.sound { right: 4%; top: 4%; width: 6%; height: 11%; border-radius: 50%; }
