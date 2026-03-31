@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './AbjadPage.css';
@@ -12,14 +12,19 @@ const AUDIO = [
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
+  const audioRef = useRef(null);
 
-  useEffect(() => {
+  const playAudio = () => {
     const file = AUDIO[index];
     if (!file) return;
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = '';
+    }
     const audio = new Audio(`/assets/audio/${file}.mp3`);
+    audioRef.current = audio;
     audio.play().catch(() => {});
-    return () => { audio.pause(); audio.src = ''; };
-  }, [index]);
+  };
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);
@@ -39,6 +44,23 @@ export default function AbjadPage() {
         className="abjad-bg"
         draggable={false}
       />
+
+      {/* Area klik transparan di atas kotak kartu */}
+      <button
+        className="abjad-hotzone card-zone"
+        onClick={playAudio}
+        aria-label={`Putar suara huruf ${AUDIO[index]}`}
+      />
+
+      {/* Tombol speaker pojok kanan atas */}
+      <button
+        className="abjad-speaker"
+        onClick={playAudio}
+        aria-label="Putar Suara"
+      >
+        🔊
+      </button>
+
       <BackButton />
       <button className="abjad-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="abjad-hotzone next" onClick={next} aria-label="Berikutnya" />
