@@ -27,6 +27,27 @@
   border-radius: 16px;
 }
 
+/* Kartu besar kiri — putar suara huruf aktif */
+.card-main {
+  top: 17%;
+  left: 8%;
+  width: 28%;
+  height: 68%;
+  border-radius: 20px;
+}
+
+/* Kartu-kartu kecil kanan — masing-masing 4 kartu */
+.card-mini {
+  top: 30%;
+  height: 42%;
+  width: 13%;
+  border-radius: 16px;
+}
+.card-mini-1 { left: 41%; }
+.card-mini-2 { left: 55%; }
+.card-mini-3 { left: 69%; }
+.card-mini-4 { left: 83%; }
+
 .vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
 .vokal-hotzone:active { background: rgba(255,255,255,0.25); }
 
