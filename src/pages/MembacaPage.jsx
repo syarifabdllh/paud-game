@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import './MembacaPage.css';
@@ -19,20 +19,30 @@ const AUDIO = [
 export default function MembacaPage() {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
+  const audioRef = useRef(null);
 
-  useEffect(() => {
-    const audio = new Audio(`/assets/audio/${AUDIO[index]}.mp3`);
+  const playAudio = (idx) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = '';
+    }
+    const audio = new Audio(`/assets/audio/${AUDIO[idx]}.mp3`);
+    audioRef.current = audio;
     audio.play().catch(() => {});
-    return () => { audio.pause(); audio.src = ''; };
-  }, [index]);
+  };
+
+  const goTo = (idx) => {
+    setIndex(idx);
+    playAudio(idx);
+  };
 
   const prev = () => {
-    if (index > 0) setIndex(index - 1);
+    if (index > 0) goTo(index - 1);
     else navigate('/menu');
   };
 
   const next = () => {
-    if (index < 9) setIndex(index + 1);
+    if (index < 9) goTo(index + 1);
     else navigate('/menu');
   };
 
@@ -44,6 +54,14 @@ export default function MembacaPage() {
         className="membaca-bg"
         draggable={false}
       />
+
+      {/* Hotzone di atas kotak kartu tengah */}
+      <button
+        className="membaca-hotzone card-zone"
+        onClick={() => playAudio(index)}
+        aria-label={`Putar suara: ${AUDIO[index]}`}
+      />
+
       <BackButton />
       <button className="membaca-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
       <button className="membaca-hotzone next" onClick={next} aria-label="Berikutnya" />
