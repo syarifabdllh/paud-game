@@ -14,25 +14,28 @@ export default function AbjadPage() {
   const navigate = useNavigate();
   const audioRef = useRef(null);
 
-  const playAudio = () => {
-    const file = AUDIO[index];
-    if (!file) return;
+  const playAudio = (idx) => {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.src = '';
     }
-    const audio = new Audio(`/assets/audio/${file}.mp3`);
+    const audio = new Audio(`/assets/audio/${AUDIO[idx]}.mp3`);
     audioRef.current = audio;
     audio.play().catch(() => {});
   };
 
+  const goTo = (idx) => {
+    setIndex(idx);
+    playAudio(idx);
+  };
+
   const prev = () => {
-    if (index > 0) setIndex(index - 1);
+    if (index > 0) goTo(index - 1);
     else navigate('/menu');
   };
 
   const next = () => {
-    if (index < 25) setIndex(index + 1);
+    if (index < 25) goTo(index + 1);
     else navigate('/menu');
   };
 
@@ -45,21 +48,12 @@ export default function AbjadPage() {
         draggable={false}
       />
 
-      {/* Area klik transparan di atas kotak kartu */}
+      {/* Klik kotak kartu → putar ulang suara huruf aktif */}
       <button
         className="abjad-hotzone card-zone"
-        onClick={playAudio}
+        onClick={() => playAudio(index)}
         aria-label={`Putar suara huruf ${AUDIO[index]}`}
       />
-
-      {/* Tombol speaker pojok kanan atas */}
-      <button
-        className="abjad-speaker"
-        onClick={playAudio}
-        aria-label="Putar Suara"
-      >
-        🔊
-      </button>
 
       <BackButton />
       <button className="abjad-hotzone prev" onClick={prev} aria-label="Sebelumnya" />

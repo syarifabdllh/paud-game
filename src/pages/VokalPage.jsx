@@ -20,18 +20,18 @@ export default function VokalPage() {
     audio.play().catch(() => {});
   };
 
-  const handleCardClick = (idx) => {
+  const goTo = (idx) => {
     setIndex(idx);
     playAudio(idx);
   };
 
   const prev = () => {
-    if (index > 0) handleCardClick(index - 1);
+    if (index > 0) goTo(index - 1);
     else navigate('/menu');
   };
 
   const next = () => {
-    if (index < 4) handleCardClick(index + 1);
+    if (index < 4) goTo(index + 1);
     else navigate('/menu');
   };
 
@@ -44,31 +44,22 @@ export default function VokalPage() {
         draggable={false}
       />
 
-      {/* Area klik di atas kartu besar (kiri) — putar ulang suara */}
+      {/* Kartu besar kiri — klik putar ulang suara */}
       <button
         className="vokal-hotzone card-main"
         onClick={() => playAudio(index)}
         aria-label={`Putar suara huruf ${VOKAL[index]}`}
       />
 
-      {/* Area klik kartu-kartu kecil (kanan) */}
+      {/* Kartu kecil kanan — klik pindah + putar suara */}
       {VOKAL.map((v, i) => (
         <button
           key={v}
           className={`vokal-hotzone card-mini card-mini-${i + 1}`}
-          onClick={() => handleCardClick(i)}
+          onClick={() => goTo(i)}
           aria-label={`Huruf ${v.toUpperCase()}`}
         />
       ))}
-
-      {/* Tombol speaker kanan atas */}
-      <button
-        className="vokal-hotzone sound"
-        onClick={() => playAudio(index)}
-        aria-label="Putar Suara"
-      >
-        🔊
-      </button>
 
       <BackButton />
       <button className="vokal-hotzone prev" onClick={prev} aria-label="Sebelumnya" />
