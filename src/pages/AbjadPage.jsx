@@ -11,9 +11,9 @@ const AUDIO = [
 
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
-  const [started, setStarted] = useState(false);
   const navigate = useNavigate();
   const audioRef = useRef(null);
+  const startedRef = useRef(false);
 
   const playAudio = (idx) => {
     if (audioRef.current) {
@@ -26,14 +26,29 @@ export default function AbjadPage() {
   };
 
   useEffect(() => {
-    if (started) playAudio(index);
-  }, [index, started]);
+    // Coba autoplay langsung, kalau gagal tunggu interaksi
+    const audio = new Audio(`/assets/audio/${AUDIO[0]}.mp3`);
+    audioRef.current = audio;
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => { startedRef.current = true; })
+        .catch(() => {
+          // Browser blokir autoplay, tunggu klik pertama
+          startedRef.current = false;
+        });
+    }
+    return () => { audio.pause(); audio.src = ''; };
+  }, []);
 
-  // Sentuhan pertama di mana saja di layar → mulai audio
+  useEffect(() => {
+    if (startedRef.current && index > 0) playAudio(index);
+  }, [index]);
+
   const handleFirstTouch = () => {
-    if (!started) {
-      setStarted(true);
-      playAudio(0);
+    if (!startedRef.current) {
+      startedRef.current = true;
+      playAudio(index);
     }
   };
 
