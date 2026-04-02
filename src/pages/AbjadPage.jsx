@@ -15,11 +15,11 @@ const AUDIO = [
 // Kartu Kuning Utama
 const CARD        = { top: 29.5, left: 31.0, width: 40.8, height: 55.5 };
 
-// Tombol Biru Kiri (Sebelumnya) - Sekarang lebih presisi di tengah ikon
-const BTN_PREV    = { top: 84.5, left: 10.2, width: 6.2,  height: 11.0 };
+// Geser jauh ke ujung kiri
+const BTN_PREV    = { top: 84.0, left: 3.0, width: 7.5, height: 12.5 };
 
-// Tombol Biru Kanan (Berikutnya) - Simetris dengan tombol kiri
-const BTN_NEXT    = { top: 84.5, left: 83.6, width: 6.2,  height: 11.0 };
+// Geser jauh ke ujung kanan
+const BTN_NEXT    = { top: 84.0, left: 89.5, width: 7.5, height: 12.5 };
 
 // Ikon Speaker Kanan Atas
 const BTN_SPEAKER = { top: 7.0,  left: 82.2, width: 5.2,  height: 9.5 };
