@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #87ceeb; /* biru langit */
+  background: #87ceeb;
 }
 
 .home-bg {
@@ -11,24 +11,9 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;      /* ganti dari cover ke contain */
+  object-fit: contain;
   object-position: center center;
   user-select: none;
   pointer-events: none;
   z-index: 0;
 }
-
-.start-hotzone {
-  position: absolute;
-  z-index: 2;
-  left: 38%;
-  top: 78%;
-  width: 24%;
-  height: 10%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 50px;
-}
-.start-hotzone:hover  { background: rgba(255,255,255,0.12); }
-.start-hotzone:active { background: rgba(255,255,255,0.2); }

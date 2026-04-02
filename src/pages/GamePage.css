@@ -18,14 +18,11 @@
   z-index: 0;
 }
 
-/* =====================
-   Skor badge
-   ===================== */
 .skor-badge {
   position: absolute;
   z-index: 3;
   top: 3%;
-  right: 12%;
+  right: 4%;
   background: #fff;
   border: 3px solid #f4c430;
   border-radius: 20px;
@@ -35,60 +32,13 @@
   color: #333;
 }
 
-/* =====================
-   Hotzone pilihan jawaban
-   ===================== */
-.pilihan-zone {
-  position: absolute;
-  z-index: 2;
-  left: 56.2%; 
-  width: 19.5%; 
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: background 0.15s;
-}
-
-.pilihan-zone:hover  { background: rgba(255, 255, 255, 0.25); }
-.pilihan-zone:active { background: rgba(255, 255, 255, 0.4); }
-
-.pilihan-zone.benar {
-  background: rgba(76, 175, 80, 0.4);
-}
-
-.pilihan-zone.salah {
-  background: rgba(230, 57, 70, 0.4);
+/* Feedback warna — diterapkan via className di HotZone */
+.benar { background: rgba(76, 175, 80, 0.4) !important; }
+.salah {
+  background: rgba(230, 57, 70, 0.4) !important;
   animation: shake 0.4s ease;
 }
 
-/* Posisi diukur presisi */
-.pilihan-1 { top: 32.5%; height: 9.5%; }
-.pilihan-2 { top: 46.5%; height: 9.5%; }
-.pilihan-3 { top: 60.5%; height: 9.5%; }
-.pilihan-4 { top: 74.5%; height: 9.5%; }
-
-/* =====================
-   Hotzone tombol navigasi
-   ===================== */
-.game-nav {
-  position: absolute;
-  z-index: 4;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-.game-nav:hover  { background: rgba(255,255,255,0.15); }
-.game-nav:active { background: rgba(255,255,255,0.25); }
-
-.game-nav.prev { left: 19.5%; bottom: 3.5%; width: 6.5%; height: 11.5%; }
-.game-nav.next { right: 18.5%; bottom: 3.5%; width: 6.5%; height: 11.5%; }
-
-/* =====================
-   Halaman selesai
-   ===================== */
 .game-selesai {
   width: 100vw;
   height: 100vh;
