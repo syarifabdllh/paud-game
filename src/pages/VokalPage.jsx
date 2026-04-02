@@ -7,19 +7,18 @@ import './VokalPage.css';
 
 const VOKAL = ['a', 'i', 'u', 'e', 'o'];
 
-// Posisi akurat 1 kartu AKTIF per slide (% terhadap gambar asli 1763x805)
-// Uu & Ee memang posisinya agak sedikit turun di gambarnya
+// Posisi 1 kartu AKTIF per slide dibesarkan sedikit agar menutupi garis terluarnya
 const ACTIVE_CARD = [
-  { top: 26.5, left: 21.0, width: 17.0, height: 60.0 }, // Aa
-  { top: 26.5, left: 31.0, width: 17.0, height: 60.0 }, // Ii
-  { top: 30.0, left: 41.5, width: 17.0, height: 60.0 }, // Uu
-  { top: 30.0, left: 52.0, width: 17.0, height: 60.0 }, // Ee
-  { top: 26.5, left: 62.5, width: 17.0, height: 60.0 }, // Oo
+  { top: 26.3, left: 21.0, width: 17.2, height: 60.2 }, // Aa
+  { top: 26.3, left: 31.0, width: 17.2, height: 60.2 }, // Ii
+  { top: 30.1, left: 41.5, width: 17.3, height: 60.2 }, // Uu
+  { top: 30.1, left: 51.8, width: 17.3, height: 60.2 }, // Ee
+  { top: 26.3, left: 62.4, width: 17.2, height: 60.2 }, // Oo
 ];
 
-const BTN_PREV    = { top: 81.0, left: 11.5, width: 6.5, height: 13.0 };
-const BTN_NEXT    = { top: 81.0, left: 83.0, width: 6.5, height: 13.0 };
-const BTN_SPEAKER = { top: 4.0,  left: 78.5, width: 4.5, height: 11.0 }; 
+const BTN_PREV    = { top: 81.2, left: 11.5, width: 6.5, height: 13.0 };
+const BTN_NEXT    = { top: 81.2, left: 82.9, width: 6.5, height: 13.0 };
+const BTN_SPEAKER = { top: 4.0,  left: 78.5, width: 4.5, height: 11.0 };
 
 export default function VokalPage() {
   const [index, setIndex] = useState(0);

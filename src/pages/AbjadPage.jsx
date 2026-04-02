@@ -11,11 +11,11 @@ const AUDIO = [
   'u','v','w','x','y','z'
 ];
 
-// Posisi akurat dalam % (Dihitung dari total resolusi gambar 1763x805)
-const CARD        = { top: 29.0, left: 31.0, width: 41.5, height: 56.0 };
-const BTN_PREV    = { top: 84.0, left: 10.0, width: 6.5,  height: 13.0 };
-const BTN_NEXT    = { top: 84.0, left: 84.0, width: 6.5,  height: 13.0 };
-const BTN_SPEAKER = { top: 6.0,  left: 81.5, width: 4.5,  height: 11.0 }; 
+// Posisi super akurat memeluk garis batas terluar bingkai
+const CARD        = { top: 28.8, left: 30.6, width: 42.2, height: 56.7 };
+const BTN_PREV    = { top: 83.8, left: 9.8,  width: 6.6,  height: 13.3 };
+const BTN_NEXT    = { top: 83.8, left: 83.7, width: 6.6,  height: 13.3 };
+const BTN_SPEAKER = { top: 6.0,  left: 81.5, width: 6.0,  height: 11.0 };
 
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);

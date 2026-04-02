@@ -18,9 +18,11 @@ const AUDIO = [
   'ikan berenang dikolam',
 ];
 
-const CARD    = { top: 28, left: 21, width: 58, height: 58 };
-const BTN_PREV = { top: 83, left: 5,  width: 8,  height: 13 };
-const BTN_NEXT = { top: 83, left: 87, width: 8,  height: 13 };
+// Posisi Hotzone diperlebar merangkul seluruh bingkai dan tombol
+const CARD        = { top: 36.4, left: 29.5, width: 41.4, height: 55.9 };
+const BTN_PREV    = { top: 83.2, left: 9.5,  width: 6.6,  height: 13.4 };
+const BTN_NEXT    = { top: 83.2, left: 83.6, width: 6.6,  height: 13.4 };
+const BTN_SPEAKER = { top: 6.0,  left: 81.5, width: 4.5,  height: 11.0 };
 
 export default function MembacaPage() {
   const [index, setIndex] = useState(0);
@@ -80,9 +82,16 @@ export default function MembacaPage() {
         draggable={false}
       />
 
-      <HotZone bounds={bounds} {...CARD}     onClick={() => playAudio(index)} ariaLabel={`Putar: ${AUDIO[index]}`} />
+      {/* Area Klik Tengah Pada Kartu Membaca */}
+      <HotZone bounds={bounds} {...CARD} onClick={() => playAudio(index)} ariaLabel={`Putar: ${AUDIO[index]}`} />
+      
+      {/* Area Klik Icon Speaker Pojok Kanan */}
+      <HotZone bounds={bounds} {...BTN_SPEAKER} onClick={() => playAudio(index)} ariaLabel="Putar Suara" />
+
+      {/* Tombol Kiri & Kanan */}
       <HotZone bounds={bounds} {...BTN_PREV} onClick={prev} ariaLabel="Sebelumnya" />
       <HotZone bounds={bounds} {...BTN_NEXT} onClick={next} ariaLabel="Berikutnya" />
+      
       <BackButton />
     </div>
   );

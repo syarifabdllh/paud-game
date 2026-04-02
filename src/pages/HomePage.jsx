@@ -4,8 +4,8 @@ import HotZone from '../components/HotZone';
 import useImageBounds from '../components/useImageBounds';
 import './HomePage.css';
 
-// % terhadap gambar asli — sesuaikan jika posisi tombol START berbeda
-const BTN_START = { top: 78, left: 38, width: 24, height: 10 };
+// % terhadap gambar asli — posisinya sekarang presisi memeluk tombol START
+const BTN_START = { top: 77.6, left: 44.9, width: 19.0, height: 10.0 };
 
 export default function HomePage() {
   const navigate = useNavigate();
