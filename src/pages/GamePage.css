@@ -20,7 +20,7 @@
 
 .skor-badge {
   position: absolute;
-  z-index: 3;
+  z-index: 10;
   top: 3%;
   right: 4%;
   background: #fff;
@@ -32,13 +32,72 @@
   color: #333;
 }
 
-/* Feedback warna — diterapkan via className di HotZone */
-.benar { background: rgba(76, 175, 80, 0.4) !important; }
-.salah {
-  background: rgba(230, 57, 70, 0.4) !important;
-  animation: shake 0.4s ease;
+/* Label teks di atas pilihan */
+.pilihan-label {
+  transition: opacity 0.15s;
+}
+.pilihan-label.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
+/* Kata yang bergeser ke drop zone */
+.kata-animasi {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  left: var(--from-left);
+  top:  var(--from-top);
+  animation: geser-ke-drop 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes geser-ke-drop {
+  from {
+    left: var(--from-left);
+    top:  var(--from-top);
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    left: var(--to-left);
+    top:  var(--to-top);
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Teks di drop zone setelah landing */
+.drop-label {
+  animation: pop-in 0.2s ease;
+}
+.drop-label.benar { background: rgba(76, 175, 80, 0.25); }
+.drop-label.salah {
+  background: rgba(230, 57, 70, 0.2);
+  animation: pop-in 0.2s ease, shake 0.4s ease 0.2s;
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0.85); }
+  60%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-8px); }
+  75%       { transform: translateX(8px); }
+}
+
+/* Feedback warna hotzone */
+.benar { background: rgba(76, 175, 80, 0.4) !important; }
+.salah { background: rgba(230, 57, 70, 0.4) !important; }
+
+/* Halaman selesai */
 .game-selesai {
   width: 100vw;
   height: 100vh;
@@ -47,7 +106,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .selesai-card {
   background: #fff;
   border-radius: 24px;
@@ -55,34 +113,11 @@
   text-align: center;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
 }
-
 .selesai-emoji { font-size: 4rem; margin-bottom: 8px; }
-
-.selesai-card h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #333;
-  margin: 0 0 4px;
-}
-
-.selesai-card p {
-  color: #888;
-  margin: 0 0 8px;
-}
-
-.selesai-skor {
-  font-size: 3rem;
-  font-weight: 900;
-  color: #f4c430;
-  margin-bottom: 24px;
-}
-
-.selesai-btns {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
+.selesai-card h1 { font-size: 2.2rem; font-weight: 800; color: #333; margin: 0 0 4px; }
+.selesai-card p  { color: #888; margin: 0 0 8px; }
+.selesai-skor    { font-size: 3rem; font-weight: 900; color: #f4c430; margin-bottom: 24px; }
+.selesai-btns    { display: flex; gap: 12px; justify-content: center; }
 .btn-ulangi, .btn-menu {
   padding: 12px 32px;
   border-radius: 30px;
@@ -92,13 +127,6 @@
   cursor: pointer;
   transition: transform 0.15s;
 }
-
 .btn-ulangi { background: #3a86ff; color: #fff; }
 .btn-menu   { background: #f4c430; color: #333; }
 .btn-ulangi:hover, .btn-menu:hover { transform: scale(1.05); }
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25%       { transform: translateX(-8px); }
-  75%       { transform: translateX(8px); }
-}
