@@ -11,11 +11,18 @@ const AUDIO = [
   'u','v','w','x','y','z'
 ];
 
-// Posisi super akurat memeluk garis batas terluar bingkai
-const CARD        = { top: 28.8, left: 30.6, width: 42.2, height: 56.7 };
-const BTN_PREV    = { top: 83.8, left: 9.8,  width: 6.6,  height: 13.3 };
-const BTN_NEXT    = { top: 83.8, left: 83.7, width: 6.6,  height: 13.3 };
-const BTN_SPEAKER = { top: 6.0,  left: 81.5, width: 6.0,  height: 11.0 };
+// POSISI PRESISI BERDASARKAN ANALISIS GAMBAR (Persentase %)
+// Kartu Kuning Utama
+const CARD        = { top: 29.5, left: 31.0, width: 40.8, height: 55.5 };
+
+// Tombol Biru Kiri (Sebelumnya) - Sekarang lebih presisi di tengah ikon
+const BTN_PREV    = { top: 84.5, left: 10.2, width: 6.2,  height: 11.0 };
+
+// Tombol Biru Kanan (Berikutnya) - Simetris dengan tombol kiri
+const BTN_NEXT    = { top: 84.5, left: 83.6, width: 6.2,  height: 11.0 };
+
+// Ikon Speaker Kanan Atas
+const BTN_SPEAKER = { top: 7.0,  left: 82.2, width: 5.2,  height: 9.5 };
 
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
