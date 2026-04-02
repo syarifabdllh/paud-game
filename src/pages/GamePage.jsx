@@ -18,19 +18,20 @@ const SOAL = [
   { id: 10, jawaban: 'Buku',    pilihan: ['Yoyo', 'Wayang', 'Buku', "Qur'an"] },
 ];
 
-// Posisi 4 pilihan jawaban di kanan (% terhadap gambar asli)
+// Hotzone 4 pilihan telah disesuaikan tepat di atas oval putih pada gambar
 const PILIHAN_POS = [
-  { top: 26, left: 56, width: 26, height: 12 },
-  { top: 40, left: 56, width: 26, height: 12 },
-  { top: 54, left: 56, width: 26, height: 12 },
-  { top: 68, left: 56, width: 26, height: 12 },
+  { top: 33.5, left: 56.5, width: 19, height: 8.5 },
+  { top: 48.5, left: 56.5, width: 19, height: 8.5 },
+  { top: 62.0, left: 56.5, width: 19, height: 8.5 },
+  { top: 75.5, left: 56.5, width: 19, height: 8.5 },
 ];
 
-// Posisi kotak oval drop di bawah gambar (% terhadap gambar asli)
-const DROP_ZONE = { top: 64, left: 17, width: 26, height: 11 };
+// Posisi kotak oval drop di bawah gambar juga sudah dipaskan
+const DROP_ZONE = { top: 73.5, left: 25.3, width: 19, height: 8.5 };
 
-const BTN_PREV = { top: 82, left: 10, width: 9, height: 14 };
-const BTN_NEXT = { top: 82, left: 81, width: 9, height: 14 };
+// Hotzone navigasi (kiri & kanan) disesuaikan agar pas dengan posisi tombol biru
+const BTN_PREV = { top: 84.5, left: 18.5, width: 6.5, height: 11 };
+const BTN_NEXT = { top: 84.5, left: 74.5, width: 6.5, height: 11 };
 
 export default function GamePage() {
   const navigate = useNavigate();
@@ -143,41 +144,9 @@ export default function GamePage() {
       <BackButton />
       <div className="skor-badge">{skor}/{SOAL.length}</div>
 
-      {/* Label teks di atas setiap pilihan */}
-      {bounds && soal.pilihan.map((p, i) => {
-        const abs = toAbs(PILIHAN_POS[i]);
-        const isAnimating = animatingIndex === i;
-        const isSelected  = selectedIndex === i;
-        const isHidden    = isSelected || isAnimating;
+      {/* Catatan: Kode map untuk render label teks statis yang tadinya menutupi gambar (menyebabkan double) sudah dibuang. */}
 
-        return (
-          <div
-            key={`label-${i}`}
-            className={`pilihan-label ${isHidden ? 'hidden' : ''}`}
-            style={{
-              position: 'absolute',
-              left:   abs.left,
-              top:    abs.top,
-              width:  abs.width,
-              height: abs.height,
-              zIndex: 4,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              pointerEvents: 'none',
-            }}
-          >
-            <span style={{
-              fontSize: Math.max(12, abs.height * 0.38),
-              fontWeight: 800,
-              color: '#222',
-              fontFamily: 'Nunito, sans-serif',
-            }}>{p}</span>
-          </div>
-        );
-      })}
-
-      {/* Kata yang sedang bergeser ke drop zone */}
+      {/* Kata yang sedang bergeser ke drop zone (Baru akan muncul ketika ditekan) */}
       {bounds && animatingIndex !== null && (() => {
         const from = toAbs(PILIHAN_POS[animatingIndex]);
         const to   = dropAbs;
@@ -203,7 +172,7 @@ export default function GamePage() {
         );
       })()}
 
-      {/* Teks di drop zone setelah animasi selesai */}
+      {/* Teks di drop zone setelah animasi selesai bersandar dengan sempurna di kotak kosong */}
       {bounds && selectedIndex !== null && animatingIndex === null && dropAbs && (
         <div
           className={`drop-label ${status === 'benar' ? 'benar' : ''} ${status === 'salah' ? 'salah' : ''}`}
