@@ -1,7 +1,7 @@
 .membaca-page {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* Menggunakan dvh agar aman di semua jenis resolusi/browser HP */
   overflow: hidden;
   background: #87ceeb;
 }
@@ -17,32 +17,3 @@
   pointer-events: none;
   z-index: 0;
 }
-
-.membaca-hotzone {
-  position: absolute;
-  z-index: 2;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-.membaca-hotzone:hover  { background: rgba(255,255,255,0.15); }
-.membaca-hotzone:active { background: rgba(255,255,255,0.25); }
-
-/* Kotak kartu tengah */
-.card-zone {
-  top: 28%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 58%;
-  height: 58%;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* Tombol < kiri bawah */
-.prev { left: 7%; bottom: 4%; width: 6.5%; height: 12%; }
-
-/* Tombol > kanan bawah */
-.next { right: 7%; bottom: 4%; width: 6.5%; height: 12%; }

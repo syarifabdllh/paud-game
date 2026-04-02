@@ -1,7 +1,7 @@
 .vokal-page {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* dvh sangat penting agar sentuhan tidak meleset di layar sentuh (HP) */
   overflow: hidden;
   background: #87ceeb;
 }
@@ -17,21 +17,3 @@
   pointer-events: none;
   z-index: 0;
 }
-
-.vokal-hotzone {
-  position: absolute;
-  z-index: 2;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-.vokal-hotzone:hover  { background: rgba(255,255,255,0.15); }
-.vokal-hotzone:active { background: rgba(255,255,255,0.25); }
-
-/* Tombol < kiri bawah */
-.prev { left: 9%; bottom: 6%; width: 7%; height: 13%; }
-
-/* Tombol > kanan bawah */
-.next { right: 8.5%; bottom: 6%; width: 7%; height: 13%; }

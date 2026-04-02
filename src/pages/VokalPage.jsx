@@ -7,17 +7,19 @@ import './VokalPage.css';
 
 const VOKAL = ['a', 'i', 'u', 'e', 'o'];
 
-// Posisi kartu AKTIF per slide (% terhadap gambar asli)
+// Posisi akurat 1 kartu AKTIF per slide (% terhadap gambar asli 1763x805)
+// Uu & Ee memang posisinya agak sedikit turun di gambarnya
 const ACTIVE_CARD = [
-  { top: 17, left: 8,  width: 26, height: 70 }, // Aa
-  { top: 15, left: 35, width: 26, height: 70 }, // Ii
-  { top: 15, left: 38, width: 26, height: 70 }, // Uu
-  { top: 15, left: 51, width: 26, height: 70 }, // Ee
-  { top: 17, left: 65, width: 26, height: 70 }, // Oo
+  { top: 26.5, left: 21.0, width: 17.0, height: 60.0 }, // Aa
+  { top: 26.5, left: 31.0, width: 17.0, height: 60.0 }, // Ii
+  { top: 30.0, left: 41.5, width: 17.0, height: 60.0 }, // Uu
+  { top: 30.0, left: 52.0, width: 17.0, height: 60.0 }, // Ee
+  { top: 26.5, left: 62.5, width: 17.0, height: 60.0 }, // Oo
 ];
 
-const BTN_PREV = { top: 82, left: 7,  width: 8, height: 13 };
-const BTN_NEXT = { top: 82, left: 85, width: 8, height: 13 };
+const BTN_PREV    = { top: 81.0, left: 11.5, width: 6.5, height: 13.0 };
+const BTN_NEXT    = { top: 81.0, left: 83.0, width: 6.5, height: 13.0 };
+const BTN_SPEAKER = { top: 4.0,  left: 78.5, width: 4.5, height: 11.0 }; 
 
 export default function VokalPage() {
   const [index, setIndex] = useState(0);
@@ -84,9 +86,16 @@ export default function VokalPage() {
         draggable={false}
       />
 
-      <HotZone bounds={bounds} {...pos}     onClick={() => playAudio(index)} ariaLabel={`Putar huruf ${VOKAL[index].toUpperCase()}`} />
+      {/* Area Klik 1 Kartu yang Menonjol Saja */}
+      <HotZone bounds={bounds} {...pos} onClick={() => playAudio(index)} ariaLabel={`Putar huruf ${VOKAL[index].toUpperCase()}`} />
+
+      {/* Area Klik Ikon Speaker Kanan Atas */}
+      <HotZone bounds={bounds} {...BTN_SPEAKER} onClick={() => playAudio(index)} ariaLabel="Putar Suara" />
+
+      {/* Tombol Kiri Kanan */}
       <HotZone bounds={bounds} {...BTN_PREV} onClick={prev} ariaLabel="Sebelumnya" />
       <HotZone bounds={bounds} {...BTN_NEXT} onClick={next} ariaLabel="Berikutnya" />
+      
       <BackButton />
     </div>
   );

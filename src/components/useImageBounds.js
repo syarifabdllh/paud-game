@@ -1,34 +1,38 @@
 import { useState, useEffect } from 'react';
 
-// Menghitung posisi & ukuran gambar aktual di layar (dengan object-fit: contain)
 export default function useImageBounds(imgRef) {
   const [bounds, setBounds] = useState(null);
 
   useEffect(() => {
-    const calculate = () => {
+    const calculateBounds = () => {
       const img = imgRef.current;
-      if (!img) return;
+      // Pastikan gambar sudah load dan memiliki ukuran asli
+      if (!img || !img.complete || img.naturalWidth === 0) return;
 
-      const containerW = window.innerWidth;
-      const containerH = window.innerHeight;
-      const imgNaturalW = img.naturalWidth;
-      const imgNaturalH = img.naturalHeight;
+      // Ukuran wadah layar (container) tempat gambar berada
+      const containerW = img.clientWidth;
+      const containerH = img.clientHeight;
 
-      if (!imgNaturalW || !imgNaturalH) return;
+      // Ukuran asli (intrinsic) dari file gambar itu sendiri
+      const imgW = img.naturalWidth;
+      const imgH = img.naturalHeight;
 
+      // Rasio perbandingan
       const containerRatio = containerW / containerH;
-      const imgRatio = imgNaturalW / imgNaturalH;
+      const imgRatio = imgW / imgH;
 
       let renderedW, renderedH, offsetX, offsetY;
 
       if (imgRatio > containerRatio) {
-        // Letterbox atas-bawah
+        // Gambar lebih memanjang ke samping dibanding layar (contoh: di Tablet)
+        // Akan ada sisa ruang (gap) di atas dan bawah gambar
         renderedW = containerW;
         renderedH = containerW / imgRatio;
         offsetX = 0;
         offsetY = (containerH - renderedH) / 2;
       } else {
-        // Letterbox kiri-kanan
+        // Gambar lebih tinggi dibanding layar (contoh: di HP saat orientasi tertentu)
+        // Akan ada sisa ruang (gap) di kiri dan kanan gambar
         renderedH = containerH;
         renderedW = containerH * imgRatio;
         offsetX = (containerW - renderedW) / 2;
@@ -38,14 +42,22 @@ export default function useImageBounds(imgRef) {
       setBounds({ renderedW, renderedH, offsetX, offsetY });
     };
 
-    const img = imgRef.current;
-    if (img?.complete) calculate();
-    else img?.addEventListener('load', calculate);
+    // Hitung saat pertama kali render
+    calculateBounds();
 
-    window.addEventListener('resize', calculate);
+    // Hitung ulang setiap kali layar HP diputar / di-resize
+    window.addEventListener('resize', calculateBounds);
+    
+    // Hitung ulang jika gambar baru saja selesai di-load
+    if (imgRef.current) {
+      imgRef.current.addEventListener('load', calculateBounds);
+    }
+
     return () => {
-      img?.removeEventListener('load', calculate);
-      window.removeEventListener('resize', calculate);
+      window.removeEventListener('resize', calculateBounds);
+      if (imgRef.current) {
+        imgRef.current.removeEventListener('load', calculateBounds);
+      }
     };
   }, [imgRef]);
 

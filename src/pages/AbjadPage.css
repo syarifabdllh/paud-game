@@ -1,7 +1,7 @@
 .abjad-page {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* dvh menjaga agar tidak meleset saat ada address bar di HP */
   overflow: hidden;
   background: #87ceeb;
 }
@@ -18,31 +18,5 @@
   z-index: 0;
 }
 
-.abjad-hotzone {
-  position: absolute;
-  z-index: 2;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-.abjad-hotzone:hover  { background: rgba(255,255,255,0.15); }
-.abjad-hotzone:active { background: rgba(255,255,255,0.25); }
-
-/* Area klik di atas kotak kartu huruf */
-.card-zone {
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 55%;
-  height: 65%;
-  cursor: pointer;
-  border-radius: 20px;
-}
-
-/* Tombol < kiri bawah */
-.prev { left: 7.5%; bottom: 4.5%; width: 6.5%; height: 11.5%; }
-
-/* Tombol > kanan bawah */
-.next { right: 7.5%; bottom: 4.5%; width: 6.5%; height: 11.5%; }
+/* Karena menggunakan komponen HotZone bawaan, tombol transparan hover-nya
+   biasanya sudah otomatis terbawa dari class .hotzone-btn di App utamanya. */

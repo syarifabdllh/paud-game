@@ -11,10 +11,11 @@ const AUDIO = [
   'u','v','w','x','y','z'
 ];
 
-// Posisi dalam % terhadap gambar asli
-const CARD   = { top: 15, left: 22, width: 55, height: 65 };
-const BTN_PREV = { top: 82, left: 7,  width: 8,  height: 13 };
-const BTN_NEXT = { top: 82, left: 85, width: 8,  height: 13 };
+// Posisi akurat dalam % (Dihitung dari total resolusi gambar 1763x805)
+const CARD        = { top: 29.0, left: 31.0, width: 41.5, height: 56.0 };
+const BTN_PREV    = { top: 84.0, left: 10.0, width: 6.5,  height: 13.0 };
+const BTN_NEXT    = { top: 84.0, left: 84.0, width: 6.5,  height: 13.0 };
+const BTN_SPEAKER = { top: 6.0,  left: 81.5, width: 4.5,  height: 11.0 }; 
 
 export default function AbjadPage() {
   const [index, setIndex] = useState(0);
@@ -74,9 +75,16 @@ export default function AbjadPage() {
         draggable={false}
       />
 
-      <HotZone bounds={bounds} {...CARD}     onClick={() => playAudio(index)} ariaLabel={`Putar huruf ${AUDIO[index]}`} />
+      {/* Area Klik Kartu Kuning Utama */}
+      <HotZone bounds={bounds} {...CARD} onClick={() => playAudio(index)} ariaLabel={`Putar huruf ${AUDIO[index]}`} />
+      
+      {/* Area Klik Ikon Speaker Kanan Atas */}
+      <HotZone bounds={bounds} {...BTN_SPEAKER} onClick={() => playAudio(index)} ariaLabel="Putar Suara" />
+
+      {/* Tombol Kiri Kanan */}
       <HotZone bounds={bounds} {...BTN_PREV} onClick={prev} ariaLabel="Sebelumnya" />
       <HotZone bounds={bounds} {...BTN_NEXT} onClick={next} ariaLabel="Berikutnya" />
+      
       <BackButton />
     </div>
   );
