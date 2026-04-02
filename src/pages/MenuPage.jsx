@@ -4,12 +4,12 @@ import HotZone from '../components/HotZone';
 import useImageBounds from '../components/useImageBounds';
 import './MenuPage.css';
 
-// Posisi % yang sudah dikalibrasi pas menutupi ujung ke ujung tepi papan kayunya
+// Posisi % yang sudah dikalibrasi SUPER PRESISI (khusus area papan kayunya saja)
 const MENU_ZONES = [
-  { key: 'abjad',   path: '/abjad',   top: 53.0, left: 11.0, width: 18.5, height: 22.0, label: 'Huruf Abjad' },
-  { key: 'vokal',   path: '/vokal',   top: 33.2, left: 28.8, width: 18.5, height: 21.5, label: 'Huruf Vokal' },
-  { key: 'membaca', path: '/membaca', top: 56.5, left: 42.8, width: 18.5, height: 23.0, label: 'Ayo Membaca' },
-  { key: 'game',    path: '/game',    top: 68.5, left: 62.6, width: 18.5, height: 21.5, label: 'Game Time'   },
+  { key: 'abjad',   path: '/abjad',   top: 53.0, left: 11.4, width: 18.0, height: 22.3, label: 'Huruf Abjad' },
+  { key: 'vokal',   path: '/vokal',   top: 33.5, left: 29.1, width: 18.0, height: 22.3, label: 'Huruf Vokal' },
+  { key: 'membaca', path: '/membaca', top: 58.6, left: 43.2, width: 18.0, height: 22.3, label: 'Ayo Membaca' },
+  { key: 'game',    path: '/game',    top: 68.4, left: 62.9, width: 18.0, height: 22.3, label: 'Game Time'   },
 ];
 
 export default function MenuPage() {
