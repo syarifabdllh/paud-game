@@ -5,10 +5,10 @@ import useImageBounds from '../components/useImageBounds';
 import './MenuPage.css';
 
 const MENU_ZONES = [
-  { key: 'abjad',   path: '/abjad',   top: 53.0, left: 11.5,  width: 17.7, height: 21.5, label: 'Huruf Abjad' },
-  { key: 'vokal',   path: '/vokal',   top: 33.0, left: 29.7,  width: 17.6, height: 20.8, label: 'Huruf Vokal' },
-  { key: 'membaca',   path: '/membaca',   top: 58.9, left: 43.1,  width: 18.2, height: 21.1, label: 'Ayo Membaca' },
-  { key: 'game',   path: '/game',   top: 69.0, left: 62.8,  width: 18.2, height: 20.5, label: 'Game Time' },
+  { key: 'abjad',   path: '/abjad',   top: 53.4, left: 5.3,  width: 20.0, height: 21.5, label: 'Huruf Abjad' },
+  { key: 'vokal',   path: '/vokal',   top: 33.0, left: 29.3,  width: 18.2, height: 21.5, label: 'Huruf Vokal' },
+  { key: 'membaca',   path: '/membaca',   top: 59.0, left: 43.2,  width: 18.0, height: 20.0, label: 'Ayo Membaca' },
+  { key: 'game',   path: '/game',   top: 68.0, left: 70.3,  width: 19.8, height: 21.5, label: 'Game Time' },
 ];
 
 export default function MenuPage() {
