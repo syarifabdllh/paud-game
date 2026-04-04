@@ -20,9 +20,10 @@ const AUDIO = [
 
 // Posisi Hotzone diperlebar merangkul seluruh bingkai dan tombol
 const CARD        = { top: 36.4, left: 29.5, width: 41.4, height: 55.9 };
-const BTN_PREV    = { top: 83.6, left: 9.6,  width: 6.1, height: 11.5 };
-const BTN_NEXT    = { top: 83.6, left: 84.3, width: 6.1, height: 11.5 };
+const BTN_PREV = { top: 82.0, left: 0.8,  width: 9.5, height: 11.5 };
+const BTN_NEXT = { top: 82.0, left: 89.7, width: 9.5, height: 11.5 };
 const BTN_SPEAKER = { top: 6.0,  left: 81.5, width: 4.5,  height: 11.0 };
+
 
 export default function MembacaPage() {
   const [index, setIndex] = useState(0);
