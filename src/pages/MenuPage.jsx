@@ -6,10 +6,10 @@ import './MenuPage.css';
 
 // Posisi 100% presisi tingkat piksel mengcover keseluruhan papan kayu
 const MENU_ZONES = [
-  { key: 'abjad',   path: '/abjad',   top: 53.0, left: 9.2,  width: 20.5, height: 23.5, label: 'Huruf Abjad' },
+  { key: 'abjad',   path: '/abjad',   top: 53.0, left: 9.2,  width: 20.5, height: 23.0, label: 'Huruf Abjad' },
   { key: 'vokal',   path: '/vokal',   top: 33.0, left: 27.2, width: 20.3, height: 21.5, label: 'Huruf Vokal' },
   { key: 'membaca', path: '/membaca', top: 56.5, left: 41.8, width: 20.3, height: 22.5, label: 'Ayo Membaca' },
-  { key: 'game',    path: '/game',    top: 55.0, left: 62.7, width: 19.8, height: 37.5, label: 'Game Time'   },
+  { key: 'game',    path: '/game',    top: 68.0, left: 62.7, width: 19.8, height: 24.5, label: 'Game Time'   },
 ];
 
 export default function MenuPage() {
