@@ -16,8 +16,8 @@ const ACTIVE_CARD = [
   { top: 26.3, left: 62.4, width: 17.2, height: 60.2 }, // Oo
 ];
 
-const BTN_PREV = { top: 71.5, left: 11.1, width: 7.5, height: 13.9 };
-const BTN_NEXT = { top: 71.5, left: 81.7, width: 7.5, height: 13.9 };
+const BTN_PREV = { top: 79.1, left: 5.8,  width: 9.1, height: 16.2 };
+const BTN_NEXT = { top: 80.1, left: 84.7, width: 9.1, height: 16.2 };
 const BTN_SPEAKER = { top: 4.0,  left: 78.5, width: 4.5, height: 11.0 };
 
 export default function VokalPage() {
